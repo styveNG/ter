@@ -10,6 +10,7 @@ class Itemset:
     # Cree des superset a partir de l'union 2 itemsets de meme taille n
     def unionItemset(self, itemset1, itemset2):
         pass
+        pass
 
     # Affiche le superSet cree a partir de l'union; il doit etre de taille n+1
     def tailleItemset(self):
