@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self,nom,spe_tech="NULL"):
+    def __init__(self,nom,spe_tech=none):
         self.nom=nom
         self.spe_tech=spe_tech
 
