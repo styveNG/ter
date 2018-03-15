@@ -16,6 +16,7 @@ couches = Item("couches", ["20couches"])
 biere = Item("biere", ["50cL", "canette"])
 oeufs = Item("oeufs", ["6", "barquette"])
 coca = Item("coca", ["2L", "bouteille", "zero"])
+cake = Item("cake")
 
 print(pain)
 print(lait)
