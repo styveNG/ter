@@ -18,7 +18,7 @@ class Transaction:
         return "{} : {}".format(self.nom_transac,self.lst_item)
 
 
-# Permet de creer le jeu de donnees TRANSACTIONS --> Items
+# Permet de creer le jeu de donnees TRANSACTION --> Items
 class Dataset:
     def __init__(self,lst_transactions):
         self.lst_transactions=lst_transactions
