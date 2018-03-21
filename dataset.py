@@ -24,7 +24,8 @@ class Dataset:
         self.lst_transactions=lst_transactions
         mondata=[]
         for mestransac in lst_transactions:
-            print(mestransac)
+            mondata.append(mestransac)
+            print (mondata)
 
     # Identifie les singletons presents dans les transactions
     # Renvoie une liste d'itemset de taille 1 non redondant
