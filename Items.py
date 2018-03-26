@@ -1,8 +1,7 @@
 class Item:
-    def __init__(self,nom,spe_tech=none):
+    def __init__(self,nom,spe_tech=None):
         self.nom=nom
         self.spe_tech=spe_tech
-
     def __repr__(self):
         return "{}: {}".format(self.nom, self.spe_tech)
 
@@ -18,9 +17,9 @@ oeufs = Item("oeufs", ["6", "barquette"])
 coca = Item("coca", ["2L", "bouteille", "zero"])
 cake = Item("cake")
 
-print(pain)
-print(lait)
-print(couches)
-print(biere)
-print(oeufs)
-print(coca)
+#print(pain)
+# print(lait)
+# print(couches)
+# print(biere)
+# print(oeufs)
+# print(coca)
