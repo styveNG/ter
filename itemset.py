@@ -6,9 +6,6 @@ class Itemset(set):
     def __init__(self, lst_item):
         super().__init__(lst_item)
 
-    # def __repr__(self):
-    #     return "{}".format(self)
-
     # Permet de determiner le support des Itemsets
     def supportItemset(self,data_set):
         pass
@@ -20,6 +17,13 @@ class Itemset(set):
         return Itemset(set_result)
     # Affiche le superSet cree a partir de l'union; il doit etre de taille n+1
 
+
+    #verifie que la l'union de deux itemsets de taille n retourne un itemset de taille n+1
+    #si c'est de taille n+1, alors retourne l'union
+    #sinon retourne None
+    def unionValide(self, monItemset):
+        pass
+
     def tailleItemset(self,monItemset):
         pass
     # Permet de verifier que tous les subset de taille n-1 qui composent un itemset
@@ -27,6 +31,8 @@ class Itemset(set):
     #les elts de lst_frq doivent etre de taille n-1
     # retourne un booleen
 
+
+    #
     def verifSubSet(self,lst_frq):
         pass
 

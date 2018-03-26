@@ -18,7 +18,7 @@ coca = Item("coca", ["2L", "bouteille", "zero"])
 cake = Item("cake")
 
 #print(pain)
-# print(lait)
+#print(lait)
 # print(couches)
 # print(biere)
 # print(oeufs)
