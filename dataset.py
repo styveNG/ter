@@ -5,10 +5,7 @@ from transaction import Transaction
 class Dataset:
     def __init__(self,lst_transactions):
         self.lst_transactions=lst_transactions
-        mondata=[]
-        for mestransac in lst_transactions:
-            mondata.append(mestransac)
-            print (mondata)
+
 
     # Identifie les singletons presents dans les transactions
     # Renvoie une liste d'itemset de taille 1 non redondant
@@ -28,10 +25,8 @@ class Dataset:
 # PROGRAMME PRINCIPAL
 #####################
 
-monCaddie1= Transaction("T1",["Pain"])
-monCaddie2 = Transaction("T2",["pain", "couches", "biere", "œufs"])
-
-monData=Dataset([monCaddie1,monCaddie2])
+monCaddie1= Transaction("T1")
+monCaddie2 = Transaction("T2")
 
 
 
