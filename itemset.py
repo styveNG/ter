@@ -1,11 +1,13 @@
+from Items import Item
+
 # cette classe devra heriter de "set"
 class Itemset(set):
     # Liste d'items
-    def __init__(self):
-        super().__init__()
+    def __init__(self, lst_item):
+        super().__init__(lst_item)
 
-    def __repr__(self):
-        return "{}".format(self)
+    # def __repr__(self):
+    #     return "{}".format(self)
 
     # Permet de determiner le support des Itemsets
     def supportItemset(self,data_set):
@@ -41,8 +43,14 @@ class Itemset(set):
 #IS.supportItemset(D1)
 # Itemset.superSetcand(lst_itemset_freq) ; lst_itemset_freq: composée d'elt de taille n
 # retourne une liste d'itemset
-monItemset = Itemset(['pain', 'lait', 'couches'])
+
+pain = Item("pain")
+lait = Item("lait", ["1L", "brique"])
+couches = Item("couches", ["20couches"])
+cake = Item("cake")
+
+monItemset = Itemset([pain, lait, couches])
 print(monItemset)
-monItemset2 = Itemset(['pain', 'pain', 'couches', 'lait', 'Lait'])
+monItemset2 = Itemset([pain, pain, couches, cake])
 print(monItemset2)
-monItemset.unionItemset(monItemset2)
+print(monItemset.unionItemset(monItemset2))
