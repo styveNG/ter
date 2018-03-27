@@ -7,9 +7,12 @@ class Transaction:
         self.nom_transac=nom_transac
         self.lst_item= []
 
+
+    #permet d'ajouter un item dans la liste d'item
     def ajouterItem(self, unItem):
         self.lst_item.append(unItem)
 
+    #transforme chaque produit de la liste en item
     def ajouterListeProd(self, listeProd):
         for produit in listeProd:
             item = Item(produit)  #transformation du produit parcouru en item
@@ -35,9 +38,10 @@ monCaddie2 = Transaction("T2")
 
 monCaddie1.ajouterItem(pain)
 monCaddie1.ajouterItem(couches)
+
 monCaddie2.ajouterListeProd(["pain", "couches", "biere", "œufs"])
 
-# print(monCaddie1)
+#print(monCaddie1)
 #
 #print(monCaddie2)
 # # affiche T2 : [pain: None, couches: None, biere: None, œufs: None] : c'est une liste qui contient des objets de type item
