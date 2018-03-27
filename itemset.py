@@ -7,7 +7,13 @@ class Itemset(set):
         super().__init__(lst_item)
 
     # Permet de determiner le support des Itemsets
+
     def supportItemset(self,data_set):
+        # mette un compeur initialisé à 0
+        # boucle sur les transactions de dataset
+                # recuperer la liste des items de la transaction
+                # en faire un itemset ( )
+                # utiliser .issubset
         pass
 
     # Cree des superset a partir de l'union de 2 itemsets de meme taille n
@@ -24,19 +30,18 @@ class Itemset(set):
     def unionValide(self, monItemset):
         pass
 
-    def tailleItemset(self,monItemset):
-        pass
+
     # Permet de verifier que tous les subset de taille n-1 qui composent un itemset
     # de taille n sont frequents
     #les elts de lst_frq doivent etre de taille n-1
     # retourne un booleen
-
-
-    #
     def verifSubSet(self,lst_frq):
         pass
 
     @classmethod
+    #liste vide d'itemset cand initialisée
+    #liste d'itemset freq de meme taille
+    # prendre des paires d'union valide qui doivent etre de taille n+1
     def superSetcand(cls,lst_itemset_freq):
         pass
 
