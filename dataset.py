@@ -7,13 +7,19 @@ class Dataset:
         self.lst_transactions=lst_transactions
 
 
+    #parcourir toutes transactions et pour chaque transaction parcourrir tous les items de le transaction
+    # en faire un itemset et verifier si on l'a deja dans le liste des singleton
+
+
     # Identifie les singletons presents dans les transactions
     # Renvoie une liste d'itemset de taille 1 non redondant
     def singleton(self):
+        #creer une liste vide
         pass
 
     # cree une liste d'itemset frequent a partir d'une liste d'itemset et d'un minSup
-    def itemsetFreq(self, lst_itemset, minsup=2):
+    # calcul le support et ceux qui verifie la condition sont rajoutés
+    def itemsetFreq(self, lst_itemset, minsup =2):
         pass
 
     #combinaison de toutes les methodes precedentes
