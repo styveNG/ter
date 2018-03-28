@@ -1,9 +1,9 @@
 class Item:
-    def __init__(self,nom,spe_tech=None):
-        self.nom=nom
-        self.spe_tech=spe_tech
+    def __init__(self,nomItem,spetech=None):
+        self.nomItem=nomItem
+        self.spetech=spetech
     def __repr__(self):
-        return "{}: {}".format(self.nom, self.spe_tech)
+        return "{}: {}".format(self.nomItem, self.spetech)
 
 
 #####################
