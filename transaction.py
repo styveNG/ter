@@ -50,6 +50,6 @@ monCaddie1.ajouterItem(couches)
 monCaddie2 = Transaction("T2")
 monCaddie2.ajouterListeProd(["pain", "couches", "biere", "œufs"])
 #print(monCaddie2)
-print(monCaddie2.lst_item[1].nomItem)   #permet d'accéder à l'item d'indice 1 du caddie 2
+#print(monCaddie2.lst_item[1].nomItem)   #permet d'accéder à l'item d'indice 1 du caddie 2
 
 
