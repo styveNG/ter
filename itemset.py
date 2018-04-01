@@ -47,7 +47,6 @@ class Itemset(set):
             subset = Itemset(self.remove(Itemset(item)))
             if subset.isnotsubset(lst_frq):
                 return "Les subsets de {} ne sont pas tous fréquents. Par conséquent, {} ne peut être fréquent".format(self, self)
-        pass
 
     @classmethod
     #liste vide d'itemset cand initialisée
