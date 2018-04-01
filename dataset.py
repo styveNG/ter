@@ -1,4 +1,4 @@
-from Items import Item
+from items import Item
 from transaction import Transaction
 
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
@@ -37,42 +37,6 @@ class Dataset:
 #####################
 # PROGRAMME PRINCIPAL
 #####################
-
-# Creation des items
-pain = Item("pain")
-lait = Item("lait", ["1L", "brique"])
-couches = Item("couches", ["20couches"])
-biere = Item("biere", ["50cL", "canette"])
-oeufs = Item("oeufs", ["6", "barquette"])
-coca = Item("coca", ["2L", "bouteille", "zero"])
-cake = Item("cake")
-
-# Creation des transactions
-monCaddie1= Transaction("T1")
-monCaddie1.ajouterItem(pain)
-monCaddie1.ajouterItem(couches)
-monCaddie1.ajouterItem(biere)
-
-monCaddie2 = Transaction("T2")
-monCaddie2.ajouterItem(couches)
-monCaddie2.ajouterItem(cake)
-monCaddie2.ajouterItem(coca)
-monCaddie2.ajouterItem(oeufs)
-
-monCaddie3 = Transaction("T3")
-monCaddie3.ajouterItem(lait)
-monCaddie3.ajouterItem(pain)
-monCaddie3.ajouterItem(oeufs)
-#### Fin des transactions ####
-
-# Creation du dataset
-monData=Dataset()
-monData.ajouterTransaction(monCaddie1)
-monData.ajouterTransaction(monCaddie2)
-monData.ajouterTransaction(monCaddie3)
-
-#print(monData)
-
 
 
 
