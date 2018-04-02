@@ -6,6 +6,17 @@ from transaction import Transaction
 class Itemset(set):
     def __init__(self, lst_item):
         super().__init__(lst_item)
+        self.lst_item=lst_item
+
+    # # => comment faire pour accéder à un élément d'un itemset??
+
+    # Doit afficher uniquement une liste d'item avec leur nom sans les spetech
+    # --- PB n'affiche pas la liste generee grace au set
+    # def __repr__(self):
+    #     lst_nomItem=[]
+    #     for num_item in range(0,len(self.lst_item)):
+    #         lst_nomItem.append(self.lst_item[num_item].nomItem)
+    #     return "Itemset: {}".format(lst_nomItem)
 
     # Permet de determiner le support des Itemsets en fonction d'un dataset
     def supportItemset(self,dataset):
@@ -36,6 +47,7 @@ class Itemset(set):
             return None
         elif len(self.unionItemset(monItemset)) != len(self) +1:
             print("L'union de ces deux itemsets n'est pas valide.")
+            return None
         else: #cas ou les itemset sont de meme taille n et leur union est de taille n+1
             return self.unionItemset(monItemset)
     # Permet de verifier que tous les subset de taille n-1 qui composent un itemset
@@ -57,11 +69,14 @@ class Itemset(set):
 #####################
 # PROGRAMME PRINCIPAL
 #####################
-
-
-
-
-
+# * IS: itemset quelconque
+# D1: dataset
+#IS.supportItemset(D1)
 # Itemset.superSetcand(lst_itemset_freq) ; lst_itemset_freq: composée d'elt de taille n
 # retourne une liste d'itemset
 
+
+
+
+# #test de verifSubset
+# #monItemset.verifSubSet([pain, lait, biere])

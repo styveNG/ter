@@ -27,7 +27,6 @@ monCaddie2.ajouterItem(couches)
 monCaddie2.ajouterItem(cake)
 monCaddie2.ajouterItem(coca)
 monCaddie2.ajouterItem(oeufs)
-monCaddie2.ajouterItem(pain)
 
 
 monCaddie3 = Transaction("T3")
@@ -35,12 +34,13 @@ monCaddie3.ajouterItem(lait)
 monCaddie3.ajouterItem(pain)
 monCaddie3.ajouterItem(oeufs)
 
+
 #print(monCaddie1)
 #print(monCaddie1.lst_item[0].spetech) : permet d'accéder à la spetech de l'item d'indice 0 du caddie 1
 
-# Methode2: Creation d'une transaction a l'aide d'une liste de produit transformer en item
-monCaddie4 = Transaction("T4")
-monCaddie4.ajouterListeProd(["pommes", "tomates", "eau", "biere"])
+# Methode2: Creation d'une transaction a l'aide d'une liste de produit transformer en item !!!!! AREVOIR !!!!
+# monCaddie4 = Transaction("T4")
+# monCaddie4.ajouterListeProd(["pommes", "pain", "tomates", "eau", "biere"])
 #print(monCaddie4)
 #print(monCaddie4.lst_item[1].nomItem)   #permet d'accéder à l'item d'indice 1 du caddie 4
 
@@ -52,8 +52,12 @@ monData=Dataset()
 monData.ajouterTransaction(monCaddie1)
 monData.ajouterTransaction(monCaddie2)
 monData.ajouterTransaction(monCaddie3)
-monData.ajouterTransaction(monCaddie4)
+#monData.ajouterTransaction(monCaddie4)
 #print(monData)
+
+##### Test de la méthode singleton #####
+
+print(monData.singleton())
 
 ######## Test de la classe Itemset #############
 
@@ -67,11 +71,14 @@ monItemset5 = Itemset([pain, biere])
 monItemset6 = Itemset([couches, biere])
 
 #print(monItemset1)
+#print(monItemset2.lst_item[0].nomItem)
 #print(monItemset2)
 #print(monItemset3)
 
 ##### Test de la méthode supportItemset #####
 # creation d'un itemset de taille 1
+
+# ==> ne trouve pas pain dans la liste des produits?
 monItemset=Itemset([pain])
 
 monsupportItemset=monItemset.supportItemset(monData)
@@ -79,39 +86,33 @@ monsupportItemset=monItemset.supportItemset(monData)
 
 ##### Test de la méthode unionItemset #####
 
+#==> Nature de ce que retourne l'unionItemset???
+
 monUnionitemset=monItemset1.unionItemset(monItemset2)
 #print(monUnionitemset)
-# #test de unionItemset => les deux itemsets ne sont pas forcément de meme taille (?)
+
 
 ##### Test de la méthode unionValide #####
 # #test de union valide : les deux itemsets doivent etre de meme taille n et leur union doit etre de taille n+1
 
 #     #cas ou les deux itemsets sont de meme taille et leur union est de taille n+1
-monUnionvalide1=monItemset4.unionValide(monItemset5)
+#monUnionvalide1=monItemset4.unionValide(monItemset5)
 #print(monUnionvalide1)
 
 #     #cas ou l'union des deux itemsets n'est pas de taille n+1
-monUnionvalide2=monItemset4.unionValide(monItemset6)
+#monUnionvalide2=monItemset4.unionValide(monItemset6)
 #print(monUnionvalide2)
 
 #     #cas ou les deux itemsets ne sont pas de meme taille
-monUnionvalide3=monItemset3.unionValide(monItemset4)
+#monUnionvalide3=monItemset3.unionValide(monItemset4)
 #print(monUnionvalide3)
 
-# # => comment faire pour accéder à un élément d'un itemset
 # # pour conserver les items qui sont soit dans monItemset, soit dans monItemset2 = retirer les items qui sont dans les 2
-# #print(monItemset ^ monItemset2)
+#print(monItemset ^ monItemset2)
 
-
-# ------ Pb !!!!!----
-# ------ Renvoie: ''Les itemsets ne sont pas de la meme taille'' lorsqu'on fait l'union d'un itemset avec lui meme
-# ------ Renvoie: ''L'union de ces deux itemsets n'est pas valide.'' et affiche quand meme
-                  # l'union lorsqu'on l'union de 2 itemsets de taille 1
 
 ##### Test de la méthode verifSubset #####
 
-monverifSubset= monItemset.verifSubSet([pain, lait, biere])
-print(monverifSubset)
-
-
+#monverifSubset= monItemset.verifSubSet([pain, lait, biere])
+#print(monverifSubset)
 

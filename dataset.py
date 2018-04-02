@@ -1,5 +1,11 @@
 from items import Item
 from transaction import Transaction
+#from itemset import Itemset
+
+class Itemset(set):
+    def __init__(self, lst_item):
+        super().__init__(lst_item)
+        self.lst_item=lst_item
 
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
 class Dataset:
@@ -20,9 +26,11 @@ class Dataset:
     def singleton(self):
         lst_singleton=[]
         for transac in self.lst_transactions:
-            print(transac)
-
-        pass
+            for item in transac.lst_item:
+                item = Itemset([item])
+                if item not in lst_singleton:
+                    lst_singleton.append(item)
+        return "Les singletons du dataset sont: \n {}".format(lst_singleton)
 
     # cree une liste d'itemset frequent a partir d'une liste d'itemset et d'un minSup
     # calcul le support et ceux qui verifie la condition sont rajoutés
