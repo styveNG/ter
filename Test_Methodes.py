@@ -65,7 +65,7 @@ Itemset1= Itemset([coca])
 Itemset2= Itemset([pain])
 Itemset3= Itemset([couches])
 
-print(monData.itemsetFreq([Itemset1,Itemset2,Itemset3],minsup=2))
+print(monData.itemsetFreq([Itemset1,Itemset2,Itemset3]))
 
 ######## Test de la classe Itemset #############
 
