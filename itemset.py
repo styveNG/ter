@@ -1,4 +1,4 @@
-from items import Item
+from item import Item
 from dataset import Dataset
 from transaction import Transaction
 
