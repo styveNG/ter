@@ -6,7 +6,6 @@ class Transaction:
         self.nom_transac=nom_transac
         self.lst_item= []
 
-
     #permet d'ajouter un item dans la liste d'item
     def ajouterItem(self, unItem):
         self.lst_item.append(unItem)

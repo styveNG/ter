@@ -57,7 +57,15 @@ monData.ajouterTransaction(monCaddie3)
 
 ##### Test de la méthode singleton #####
 
-print(monData.singleton())
+#print(monData.singleton())
+
+##### Test de la méthode itemsetFreq #####
+# liste_d'itemset
+Itemset1= Itemset([coca])
+Itemset2= Itemset([pain])
+Itemset3= Itemset([couches])
+
+print(monData.itemsetFreq([Itemset1,Itemset2,Itemset3],minsup=2))
 
 ######## Test de la classe Itemset #############
 

@@ -1,17 +1,34 @@
 from item import Item
 from transaction import Transaction
 #from itemset import Itemset
+# ==> ne marche pas quand on importe la classe Itemset
+
 
 class Itemset(set):
     def __init__(self, lst_item):
         super().__init__(lst_item)
         self.lst_item=lst_item
 
+    def supportItemset(self,dataset):
+        # mettre un compeur initialisé à 0
+        # boucle sur les transactions de dataset
+                # recuperer la liste des items de la transaction
+                # en faire un itemset ( )
+                # utiliser .issubset => si vaut TRUE, rajouter 1 au compteur
+        support = 0
+        for transaction in dataset.lst_transactions:
+            lst_item = transaction.lst_item
+            itemset = Itemset(lst_item)
+            if self.issubset(itemset):
+                support += 1
+        return support
+
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
 class Dataset:
     def __init__(self):
         self.lst_transactions=[]
 
+    # Ajoute des transactions dans le data
     def ajouterTransaction(self,maTransaction):
         self.lst_transactions.append(maTransaction)
 
@@ -34,8 +51,15 @@ class Dataset:
 
     # cree une liste d'itemset frequent a partir d'une liste d'itemset et d'un minSup
     # calcul le support et ceux qui verifie la condition sont rajoutés
-    def itemsetFreq(self, lst_itemset, minsup =2):
-        pass
+    def itemsetFreq(self, lst_itemset, minsup=2):
+        lst_itemsetfreq=[]
+        for monItemset in lst_itemset:
+            #print(monItemset)
+            supportItemset=monItemset.supportItemset(self)
+            #print(supportItemset)
+            if supportItemset >= minsup:
+                lst_itemsetfreq.append(monItemset)
+        return "Liste d'itemsets frequents : {}".format(lst_itemsetfreq)
 
     #combinaison de toutes les methodes precedentes
     def aPriori(self,minsup):
