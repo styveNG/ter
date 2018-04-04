@@ -11,11 +11,12 @@ class Itemset(set):
 
     # Doit afficher uniquement une liste d'item avec leur nom sans les spetech
     # --- PB n'affiche pas la liste generee grace au set
-    # def __repr__(self):
-    #     lst_nomItem=[]
-    #     for num_item in range(0,len(self)):
-    #         lst_nomItem.append(self.lst_item[num_item].nomItem)
-    #     return "Itemset: {}".format(lst_nomItem)
+    def __repr__(self):
+        lst_nomItem=[]
+        for num_item in range(0,len(self)):
+            lst_nomItem.append(self.lst_item[num_item].nomItem)
+        return "Itemset: {}".format(lst_nomItem)
+
 
     # Permet de determiner le support des Itemsets en fonction d'un dataset
     def supportItemset(self,dataset):
@@ -56,7 +57,8 @@ class Itemset(set):
     def verifSubSet(self,lst_frq):
         for item in self:
             subset = Itemset(self.remove(Itemset(item)))
-            if subset.isnotsubset(lst_frq):
+            if not subset.issubset(lst_frq):
+                #retourne T / F
                 return "Les subsets de {} ne sont pas tous fréquents. Par conséquent, {} ne peut être fréquent".format(self, self)
 
     @classmethod

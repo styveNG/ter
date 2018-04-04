@@ -18,8 +18,7 @@ class Transaction:
     #transforme chaque produit de la liste en item
     def ajouterListeProd(self, listeProd):
         for produit in listeProd:
-            item = Item(produit)  #transformation du produit parcouru en item
-            self.ajouterItem(item) #appel à la méthode ajouter item
+            self.ajouterItem(produit) #appel à la méthode ajouter item
 
 
     def __repr__(self):

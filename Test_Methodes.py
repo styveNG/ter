@@ -39,8 +39,8 @@ monCaddie3.ajouterItem(oeufs)
 #print(monCaddie1.lst_item[0].spetech) : permet d'accéder à la spetech de l'item d'indice 0 du caddie 1
 
 # Methode2: Creation d'une transaction a l'aide d'une liste de produit transformer en item !!!!! AREVOIR !!!!
-# monCaddie4 = Transaction("T4")
-# monCaddie4.ajouterListeProd(["pommes", "pain", "tomates", "eau", "biere"])
+monCaddie4 = Transaction("T4")
+monCaddie4.ajouterListeProd([Item("pommes"), Item("pain")])
 #print(monCaddie4)
 #print(monCaddie4.lst_item[1].nomItem)   #permet d'accéder à l'item d'indice 1 du caddie 4
 
@@ -52,21 +52,22 @@ monData=Dataset()
 monData.ajouterTransaction(monCaddie1)
 monData.ajouterTransaction(monCaddie2)
 monData.ajouterTransaction(monCaddie3)
-#monData.ajouterTransaction(monCaddie4)
-#print(monData)
+monData.ajouterTransaction(monCaddie4)
+print(monData)
 
 ##### Test de la méthode singleton #####
 
 #print(monData.singleton())
 
 ##### Test de la méthode itemsetFreq #####
+
 # liste_d'itemset
 Itemset1= Itemset([coca])
 Itemset2= Itemset([pain])
 Itemset3= Itemset([couches])
 #print(Itemset1,Itemset2,Itemset3)
-print(Itemset3)
-print(monData.itemsetFreq([Itemset1,Itemset2,Itemset3]))
+#print(Itemset3)
+#print(monData.itemsetFreq([Itemset1,Itemset2,Itemset3]))
 
 ######## Test de la classe Itemset #############
 
@@ -85,12 +86,13 @@ monItemset6 = Itemset([couches, biere])
 #print(monItemset3)
 
 ##### Test de la méthode supportItemset #####
+
 # creation d'un itemset de taille 1
 
 # ==> ne trouve pas pain dans la liste des produits?
 monItemset=Itemset([pain])
 
-monsupportItemset=monItemset.supportItemset(monData)
+#monsupportItemset=monItemset.supportItemset(monData)
 #print(monsupportItemset)
 
 ##### Test de la méthode unionItemset #####
