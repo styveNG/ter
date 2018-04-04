@@ -1,12 +1,11 @@
-from item import Item
-from dataset import Dataset
-from transaction import Transaction
+# from item import Item
+# from dataset import Dataset
+# from transaction import Transaction
 
 # la classe Itemset herite de la class set
 class Itemset(set):
     def __init__(self, lst_item):
         super().__init__(lst_item)
-        self.lst_item=lst_item
 
     # # => comment faire pour accéder à un élément d'un itemset??
 
@@ -14,7 +13,7 @@ class Itemset(set):
     # --- PB n'affiche pas la liste generee grace au set
     # def __repr__(self):
     #     lst_nomItem=[]
-    #     for num_item in range(0,len(self.lst_item)):
+    #     for num_item in range(0,len(self)):
     #         lst_nomItem.append(self.lst_item[num_item].nomItem)
     #     return "Itemset: {}".format(lst_nomItem)
 
@@ -31,7 +30,7 @@ class Itemset(set):
             itemset = Itemset(lst_item)
             if self.issubset(itemset):
                 support += 1
-        return "Le support de l'{} est {}.".format(self,support)
+        return support
     # Cree des superset a partir de l'union de 2 itemsets de meme taille n
     ## union est vire remplacé par unionvalide
     def unionItemset(self, monItemset):

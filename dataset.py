@@ -1,27 +1,27 @@
-from item import Item
-from transaction import Transaction
-#from itemset import Itemset
+# from item import Item
+# from transaction import Transaction
+from itemset import Itemset
 # ==> ne marche pas quand on importe la classe Itemset
 
 
-class Itemset(set):
-    def __init__(self, lst_item):
-        super().__init__(lst_item)
-        self.lst_item=lst_item
-
-    def supportItemset(self,dataset):
-        # mettre un compeur initialisé à 0
-        # boucle sur les transactions de dataset
-                # recuperer la liste des items de la transaction
-                # en faire un itemset ( )
-                # utiliser .issubset => si vaut TRUE, rajouter 1 au compteur
-        support = 0
-        for transaction in dataset.lst_transactions:
-            lst_item = transaction.lst_item
-            itemset = Itemset(lst_item)
-            if self.issubset(itemset):
-                support += 1
-        return support
+# class Itemset(set):
+#     def __init__(self, lst_item):
+#         super().__init__(lst_item)
+#         self.lst_item=lst_item
+#
+#     def supportItemset(self,dataset):
+#         # mettre un compeur initialisé à 0
+#         # boucle sur les transactions de dataset
+#                 # recuperer la liste des items de la transaction
+#                 # en faire un itemset ( )
+#                 # utiliser .issubset => si vaut TRUE, rajouter 1 au compteur
+#         support = 0
+#         for transaction in dataset.lst_transactions:
+#             lst_item = transaction.lst_item
+#             itemset = Itemset(lst_item)
+#             if self.issubset(itemset):
+#                 support += 1
+#         return support
 
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
 class Dataset:
@@ -57,7 +57,7 @@ class Dataset:
             #print(monItemset)
             supportItemset=monItemset.supportItemset(self)
             #print(supportItemset)
-            if supportItemset >= minsup:
+            if int(supportItemset) >= minsup:
                 lst_itemsetfreq.append(monItemset)
         return "Liste d'itemsets frequents : {}".format(lst_itemsetfreq)
 
