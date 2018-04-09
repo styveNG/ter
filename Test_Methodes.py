@@ -66,7 +66,7 @@ monData.ajouterTransaction(monCaddie1)
 monData.ajouterTransaction(monCaddie2)
 monData.ajouterTransaction(monCaddie3)
 monData.ajouterTransaction(monCaddie4)
-print(monData)
+#print(monData)
 
 #___________________________________________________________
 
