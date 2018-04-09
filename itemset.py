@@ -17,10 +17,11 @@ class Itemset(set):
     #         lst_nomItem.append(self.lst_item[num_item].nomItem)
     #     return lst_nomItem
 
+    def __repr__(self):
+        pass
 
     # Permet de determiner le support des Itemsets en fonction d'un dataset
     def supportItemset(self,dataset):
-
         # mettre un compeur initialisé à 0
         # boucle sur les transactions de dataset
                 # recuperer la liste des items de la transaction
@@ -33,6 +34,7 @@ class Itemset(set):
             if self.issubset(itemset):
                 support += 1
         return support
+
     # Cree des superset a partir de l'union de 2 itemsets de meme taille n
     ## union est vire remplacé par unionvalide
     def unionItemset(self, monItemset):
@@ -55,19 +57,26 @@ class Itemset(set):
     # de taille n sont frequents
     #les elts de lst_frq doivent etre de taille n-1
     # retourne un booleen
-    def verifSubSet(self,lst_frq):
+    def verifSubSet(self,lst_frq): #retourne T / F
         for item in self:
             subset = Itemset(self.remove(Itemset(item)))
-            if not subset.issubset(lst_frq):
-                #retourne T / F
-                return "Les subsets de {} ne sont pas tous fréquents. Par conséquent, {} ne peut être fréquent".format(self, self)
+            if not subset.issubset(lst_frq):   ## si au moins un des subsets de self ne fait pas partie de lst_frq
+                return False
+            else:  ## si tous les subsets de self sont dans lst_frq
+                return True
 
     @classmethod
-    #liste vide d'itemset cand initialisée
-    #liste d'itemset freq de meme taille
-    # prendre des paires d'union valide qui doivent etre de taille n+1
+    #a initialiser: liste vide d'itemset cand
+    #prend une liste d'itemsets de meme taille en argument
     def superSetcand(cls,lst_itemset_freq):
+        ## prendre deux par deux des itemsets de lst_itemset_frq, en faire l'union. si l'union est de taille n+1,
+        ## verifier que tous les subsets de cette union font partie de lst_itemset_frq (exemple concret où ce n'est pas le cas)
+        ## si cette condition est vérifiée, stocker l'itemset obtenu dans une liste
+        ## on passe aux paires suivantes, meme démarche. si l'itemset est deja dans la liste, pas la peine de le rajouter de nouveau
+        ## à la fin de la boucle, retourner la liste d'itemsets (qui doivent tous etre de taille n+1)
         pass
+
+
 #####################
 # PROGRAMME PRINCIPAL
 #####################
