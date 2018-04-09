@@ -11,14 +11,6 @@ class Itemset(set):
 
     # Doit afficher uniquement une liste d'item avec leur nom sans les spetech
     # --- PB n'affiche pas la liste generee grace au set
-    # def __repr__(self):
-    #     lst_nomItem=[]
-    #     for num_item in range(0,len(self)):
-    #         lst_nomItem.append(self.lst_item[num_item].nomItem)
-    #     return lst_nomItem
-
-    def __repr__(self):
-        pass
 
     # Permet de determiner le support des Itemsets en fonction d'un dataset
     def supportItemset(self,dataset):
@@ -40,6 +32,7 @@ class Itemset(set):
     def unionItemset(self, monItemset):
         set_result = super().union(monItemset)
         return Itemset(set_result)
+
     # Affiche le superSet cree a partir de l'union; il doit etre de taille n+1
     #verifie que la l'union de deux itemsets de taille n retourne un itemset de taille n+1
     #si c'est de taille n+1, alors retourne l'union
@@ -53,6 +46,7 @@ class Itemset(set):
             return None
         else: #cas ou les itemset sont de meme taille n et leur union est de taille n+1
             return self.unionItemset(monItemset)
+
     # Permet de verifier que tous les subset de taille n-1 qui composent un itemset
     # de taille n sont frequents
     #les elts de lst_frq doivent etre de taille n-1
@@ -68,7 +62,7 @@ class Itemset(set):
     @classmethod
     #a initialiser: liste vide d'itemset cand
     #prend une liste d'itemsets de meme taille en argument
-    def superSetcand(cls,lst_itemset_freq):
+    def supersetCand(cls,lst_itemset_frq):
         ## prendre deux par deux des itemsets de lst_itemset_frq, en faire l'union. si l'union est de taille n+1,
         ## verifier que tous les subsets de cette union font partie de lst_itemset_frq (exemple concret où ce n'est pas le cas)
         ## si cette condition est vérifiée, stocker l'itemset obtenu dans une liste
