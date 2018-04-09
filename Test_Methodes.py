@@ -162,6 +162,7 @@ monUnionitemset=Itemset1.unionItemset(Itemset2)
 
 ##### TEST METHODE VERIFSUBSET #####
 
+
 #monverifSubset= monItemset.verifSubSet([pain, lait, biere])
 #print(monverifSubset)
 

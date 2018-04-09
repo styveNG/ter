@@ -49,11 +49,11 @@ class Dataset:
 
         # Recuperation des singletons du dataset
         liste_singleton=Dataset.singleton(self)
-        # On cree une liste vide d'itemset qu'on retournera
+        # On cree une liste vide d'itemset qui nous permettra de recuperer la liste des sinletons frequents
         mesItemsetFrq=[]
 
-        # Recupere les Unions d'itemset pour verifier si elles sont valident
-        mesUnions = []
+        # Permet de recuperer la liste des Itemsets( de taille n+1)
+        mescandidats=[]
 
         # Pour chaque singleton (qui sont des itemset de taille 1) dans la liste des singletons Calculer le support
         for monSingleton in liste_singleton:
@@ -64,37 +64,19 @@ class Dataset:
                 if unSupport >= minsup:
                     mesItemsetFrq.append(monSingleton)
 
-                    # Pour chaque itemeset(singleton) dans mesItemsetFreq, faire une union d'itemset
-                    # Pas tres sur de cette boucle!!!!!!! NONNNN
-                    # for unItemset in mesItemsetFrq:
-                    #     uneUnion=unItemset.unionItemset(unItemset)
-                    #     mesUnions.append(uneUnion)
-                    #     print(mesUnions)
+                    # On recupere une liste d'itemset de taille n+1 frequent
+                    monCandidat=Itemset.supersetCand(mesItemsetFrq)
+                    mescandidats.append(monCandidat)
 
-                        # Pour une union verifier qu'elle est valide
-                        # Pas sur de cette boucle non plus
-                        # for monUnion in mesUnions:
-                        #     monUnionvalide=monUnion.unionValide(monUnion)
-                        #     mesUnions.append(monUnionvalide)
-                            #print(mesUnions)
+                    # Pour un candidat dans la liste d'itemset (de taille n+1) frequent, calculer le support
+                    # si le support d'un candidat est superieur ou egal au minsup
+                    # on le rajoute dans la liste de candidat
+                    for moncandidat in mescandidats:
+                        supportCand=moncandidat.supportItemset(self)
+                        if supportCand>= minsup:
+                            mescandidats.append(moncandidat)
 
-                            # si l'union est valide, il faut verifier que tous les subsets sont frequents
-                            # if monUnionvalide is not None:
-                            #     mesUnions.verifSubSet(mesItemsetFrq)
-                            #
-                            #
-                            #
-                            #
-                            #
-                            # # et calculer le support de l'union
-                            # for monUnionvalide in mesUnions:
-                            #     monUnionvalide.verifSubset(monUnionvalide)
-                            #     SupUnionvalide=monUnionvalide.supportItemset(self)
-                            #     if SupUnionvalide >=minsup:
-                            #         mesItemsetFrq.append(monUnionvalide)
-
-
-        return "Liste d'itemset frequent dans le data : \n {} ".format(mesItemsetFrq)
+        return "Liste d'itemset (de taille n+1) frequent dans le data : \n {} ".format(mescandidats)
 
 
 #####################
