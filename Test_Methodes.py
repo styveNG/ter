@@ -91,7 +91,7 @@ lst_itemset=monData.singleton()
 
     ##### TEST APRIORI  #####
 
-print(monData.aPriori(minsup=2))
+#monData.aPriori(minsup=2)
 
 
 #_______________________________________________________________________________________________________________________
@@ -112,8 +112,8 @@ Itemset8=Itemset([pain])
 
 #print(Itemset1)
 #print(Itemset2.lst_item[0].nomItem)
-#print(monItemset2)
-#print(monItemset3)
+#print(Itemset2)
+#print(Itemset3)
 
 # Recherche d'itemset frequent à partir d'une liste d'itemset de taille n et d'un minSup
 
@@ -142,18 +142,29 @@ monUnionitemset=Itemset1.unionItemset(Itemset2)
 
     #cas ou les deux itemsets sont de meme taille et leur union est de taille n+1
 
+# Itemset1= Itemset([pain, lait, couches, coca]) : taille 4
+# Itemset2 = Itemset([pain, pain, couches, cake, couches]) : taille 3
+# Itemset3= Itemset([coca]) : taille 1
+# Itemset4 = Itemset([pain, lait]) : taille 2
+# Itemset5 = Itemset([pain, biere]) : taille 2
+# Itemset6 = Itemset([couches, biere]) : taille 2
+# Itemset8=Itemset([pain]) : taille 1
+
 #monUnionvalide1=Itemset4.unionValide(Itemset5)
 #print(monUnionvalide1)
 
     #cas ou l'union des deux itemsets n'est pas de taille n+1
 
-#monUnionvalide2=Itemset4.unionValide(Itemset6)
-#print(monUnionvalide2)
+# monUnionvalide2=Itemset4.unionValide(Itemset6)
+# print(monUnionvalide2)
 
     #cas ou les deux itemsets ne sont pas de meme taille
 
-#monUnionvalide3=Itemset3.unionValide(Itemset4)
-#print(monUnionvalide3)
+# monUnionvalide3=Itemset3.unionValide(Itemset4)
+# print(monUnionvalide3)
+
+# monUnionvalide4=Itemset1.unionValide(Itemset2)
+# print(monUnionvalide4)
 
 # # pour conserver les items qui sont soit dans monItemset, soit dans monItemset2 = retirer les items qui sont dans les 2
 #print(monItemset ^ monItemset2)
@@ -162,6 +173,7 @@ monUnionitemset=Itemset1.unionItemset(Itemset2)
 
 ##### TEST METHODE VERIFSUBSET #####
 
-#monverifSubset= monItemset.verifSubSet([pain, lait, biere])
-#print(monverifSubset)
+# Itemset2 = Itemset([pain, pain, couches, cake, couches]) : taille 3
 
+monverifSubset=Itemset2.verifSubSet([pain, lait, biere])
+print(monverifSubset)

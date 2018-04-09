@@ -53,7 +53,9 @@ class Itemset(set):
     # retourne un booleen
     def verifSubSet(self,lst_frq): #retourne T / F
         for item in self:
-            subset = Itemset(self.remove(Itemset(item)))
+            print(item)
+            subset = self - Itemset([item])
+            print(subset)
             if not subset.issubset(lst_frq):   ## si au moins un des subsets de self ne fait pas partie de lst_frq
                 return False
             else:  ## si tous les subsets de self sont dans lst_frq
@@ -63,12 +65,18 @@ class Itemset(set):
     #a initialiser: liste vide d'itemset cand
     #prend une liste d'itemsets de meme taille en argument
     def supersetCand(cls,lst_itemset_frq):
-        ## prendre deux par deux des itemsets de lst_itemset_frq, en faire l'union. si l'union est de taille n+1,
+        ## prendre deux par deux des itemsets de lst_itemset_frq, en faire l'union. si l'union est de taille n+1 cf. unionValide,
         ## verifier que tous les subsets de cette union font partie de lst_itemset_frq (exemple concret où ce n'est pas le cas)
         ## si cette condition est vérifiée, stocker l'itemset obtenu dans une liste
         ## on passe aux paires suivantes, meme démarche. si l'itemset est deja dans la liste, pas la peine de le rajouter de nouveau
         ## à la fin de la boucle, retourner la liste d'itemsets (qui doivent tous etre de taille n+1)
-        pass
+        lst_superset = []
+        for itemset1 in lst_itemset_frq:
+            for itemset2 in lst_itemset_frq:
+                if itemset1 != itemset2:
+                    union = itemset1.unionValide(itemset2)
+                    if union.verifSubset(lst_itemset_frq):
+                        lst_itemset_frq.append(union)
 
 
 #####################
