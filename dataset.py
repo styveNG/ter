@@ -62,7 +62,7 @@ class Dataset:
             # Pour chaque support(des singletons) >= au minSup, on rajoute le singleton dans mesItemsetFreq
             for unSupport in [mesSupports]:
                 if unSupport >= minsup:
-                    mesItemsetFrq.append(monSingleton)
+                    mesItemsetFrq.append(monSingleton) #DATA
 
                     # Pour chaque itemeset(singleton) dans mesItemsetFreq, faire une union d'itemset
                     # Pas tres sur de cette boucle!!!!!!! NONNNN
