@@ -47,41 +47,54 @@ class Dataset:
     # retourne une liste d'itemsets frequents
     def aPriori(self,minsup):
 
-        # Recuperation des singleton du dataset
+        # Recuperation des singletons du dataset
         liste_singleton=Dataset.singleton(self)
-        # On cree une liste vide d'itemset qu'on retournera??
+        # On cree une liste vide d'itemset qu'on retournera
         mesItemsetFrq=[]
-        # Pour chaque singleton (qui sont des itemset de taille 1) dans la liste des singleton
-        # Calculer le support
+
+        # Recupere les Unions d'itemset pour verifier si elles sont valident
+        mesUnions = []
+
+        # Pour chaque singleton (qui sont des itemset de taille 1) dans la liste des singletons Calculer le support
         for monSingleton in liste_singleton:
             mesSupports=monSingleton.supportItemset(self)
+
             # Pour chaque support(des singletons) >= au minSup, on rajoute le singleton dans mesItemsetFreq
-            for unSupport in mesSupports:
+            for unSupport in [mesSupports]:
                 if unSupport >= minsup:
                     mesItemsetFrq.append(monSingleton)
+
                     # Pour chaque itemeset(singleton) dans mesItemsetFreq, faire une union d'itemset
-                    # Pas tres sur de cette boucle
-                    mesUnions=[]
-                    for monSingleton in mesItemsetFrq:
-                        uneUnion=monSingleton.unionItemset(monSingleton)
-                        mesUnions.append(uneUnion)
+                    # Pas tres sur de cette boucle!!!!!!! NONNNN
+                    # for unItemset in mesItemsetFrq:
+                    #     uneUnion=unItemset.unionItemset(unItemset)
+                    #     mesUnions.append(uneUnion)
+                    #     print(mesUnions)
 
                         # Pour une union verifier qu'elle est valide
                         # Pas sur de cette boucle non plus
-                        for uneUnion in mesUnions:
-                            monUnionvalide=uneUnion.unionValide(uneUnion)
-                            mesUnions.append(monUnionvalide)
-                            # pour chaque unionValide  il faut verifier que tous les subsets sont frequents
-                            # et calculer le support de l'union
-                            for monUnionvalide in mesUnions:
-                                monUnionvalide.verifSubset(monUnionvalide)
-                                SupUnionvalide=monUnionvalide.supportItemset(self)
-                                if SupUnionvalide >=minsup:
-                                    mesItemsetFrq.append(monUnionvalide)
+                        # for monUnion in mesUnions:
+                        #     monUnionvalide=monUnion.unionValide(monUnion)
+                        #     mesUnions.append(monUnionvalide)
+                            #print(mesUnions)
+
+                            # si l'union est valide, il faut verifier que tous les subsets sont frequents
+                            # if monUnionvalide is not None:
+                            #     mesUnions.verifSubSet(mesItemsetFrq)
+                            #
+                            #
+                            #
+                            #
+                            #
+                            # # et calculer le support de l'union
+                            # for monUnionvalide in mesUnions:
+                            #     monUnionvalide.verifSubset(monUnionvalide)
+                            #     SupUnionvalide=monUnionvalide.supportItemset(self)
+                            #     if SupUnionvalide >=minsup:
+                            #         mesItemsetFrq.append(monUnionvalide)
 
 
         return mesItemsetFrq
-        pass
 
 
 #####################
@@ -89,8 +102,6 @@ class Dataset:
 #####################
 
 
-
-## essai de push
 
 
 

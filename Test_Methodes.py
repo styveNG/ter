@@ -66,7 +66,7 @@ monData.ajouterTransaction(monCaddie1)
 monData.ajouterTransaction(monCaddie2)
 monData.ajouterTransaction(monCaddie3)
 monData.ajouterTransaction(monCaddie4)
-#print(monData)
+print(monData)
 
 #___________________________________________________________
 
@@ -91,7 +91,7 @@ lst_itemset=monData.singleton()
 
     ##### TEST APRIORI  #####
 
-#monData.aPriori(minsup=2)
+print(monData.aPriori(minsup=2))
 
 
 #_______________________________________________________________________________________________________________________
