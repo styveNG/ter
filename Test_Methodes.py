@@ -173,7 +173,26 @@ monUnionitemset=Itemset1.unionItemset(Itemset2)
 
 ##### TEST METHODE VERIFSUBSET #####
 
+# Itemset1= Itemset([pain, lait, couches, coca]) : taille 4
 # Itemset2 = Itemset([pain, pain, couches, cake, couches]) : taille 3
+# Itemset3= Itemset([coca]) : taille 1
+# Itemset4 = Itemset([pain, lait]) : taille 2
+# Itemset5 = Itemset([pain, biere]) : taille 2
+# Itemset6 = Itemset([couches, biere]) : taille 2
+# Itemset8=Itemset([pain]) : taille 1
 
-monverifSubset=Itemset2.verifSubSet([pain, lait, biere])
-print(monverifSubset)
+
+## on verifie que tous les subsets de taille 1 d'un itemset de taille 2 sont frequants
+monItemset1 = Itemset([pain, lait])
+
+monverifSubset=monItemset1.verifSubset([pain, lait])
+#print(monverifSubset)
+
+## on vérifie que tous les subsets de taille 2 d'un itemset de taille 3 sont fréquents
+
+monItemset2 = Itemset([pain,lait,coca])
+monItemsetFreq1 = Itemset([pain,lait])
+monItemsetFreq2 = Itemset([pain,coca])
+monItemsetFreq3 = Itemset([lait,coca]) #essayer avc coca lait
+
+monverifSubset2 = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
