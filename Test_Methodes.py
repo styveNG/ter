@@ -3,8 +3,12 @@ from itemset import Itemset
 from dataset import Dataset
 from transaction import Transaction
 
-######## Test de la classe Item #############
+#_______________________________________________________________________________________________________________________
+
+######## TEST CLASS ITEM #############
+
 # Creation des items
+
 pain = Item("pain")
 lait = Item("lait", ["1L", "brique"])
 couches = Item("couches", ["20couches"])
@@ -12,117 +16,151 @@ biere = Item("biere", ["50cL", "canette"])
 oeufs = Item("oeufs", ["6", "barquette"])
 coca = Item("coca", ["2L", "bouteille", "zero"])
 cake = Item("cake")
-#print(coca)
+# print(biere)
 
-######## Test de la classe Transaction #############
+#_______________________________________________________________________________________________________________________
 
-# Methode1: Creation d'une transaction avec des items crees a la main
+######## TEST CLASS TRANSACTION #############
+
+# Methode1: Creation d'une transaction avec des items existants (cf.CLASS ITEM)
+
 monCaddie1= Transaction("T1")
 monCaddie1.ajouterItem(pain)
 monCaddie1.ajouterItem(couches)
 monCaddie1.ajouterItem(biere)
+monCaddie1.ajouterItem(lait)
+
+#print(monCaddie1)
+
+#print(monCaddie1.lst_item[0].spetech) #: permet d'accéder à la spetech de l'item d'indice 0 du caddie 1
 
 monCaddie2 = Transaction("T2")
 monCaddie2.ajouterItem(couches)
 monCaddie2.ajouterItem(cake)
 monCaddie2.ajouterItem(coca)
 monCaddie2.ajouterItem(oeufs)
-
+#print(monCaddie2)
 
 monCaddie3 = Transaction("T3")
 monCaddie3.ajouterItem(lait)
 monCaddie3.ajouterItem(pain)
 monCaddie3.ajouterItem(oeufs)
+#print(monCaddie3)
 
+# Methode2: Creation d'une transaction a l'aide d'une liste de produits transformer en item !!!!! AREVOIR !!!!
 
-#print(monCaddie1)
-#print(monCaddie1.lst_item[0].spetech) : permet d'accéder à la spetech de l'item d'indice 0 du caddie 1
-
-# Methode2: Creation d'une transaction a l'aide d'une liste de produit transformer en item !!!!! AREVOIR !!!!
 monCaddie4 = Transaction("T4")
-monCaddie4.ajouterListeProd([Item("pommes"), Item("pain")])
+monCaddie4.ajouterListeProd([Item("pommes",["Golden","10kg"]), Item("pain")])
 #print(monCaddie4)
+
 #print(monCaddie4.lst_item[1].nomItem)   #permet d'accéder à l'item d'indice 1 du caddie 4
 
+#_______________________________________________________________________________________________________________________
 
-######## Test de la classe Dataset #############
+######## TEST CLASS DATASET #############
 
 # Creation du dataset
+
 monData=Dataset()
 monData.ajouterTransaction(monCaddie1)
 monData.ajouterTransaction(monCaddie2)
 monData.ajouterTransaction(monCaddie3)
 monData.ajouterTransaction(monCaddie4)
-print(monData)
+#print(monData)
 
-##### Test de la méthode singleton #####
+#___________________________________________________________
+
+    ##### TEST METHODE SINGLETON #####
 
 #print(monData.singleton())
 
-##### Test de la méthode itemsetFreq #####
+#___________________________________________________________
 
-# liste_d'itemset
-Itemset1= Itemset([coca])
-Itemset2= Itemset([pain])
-Itemset3= Itemset([couches])
-#print(Itemset1,Itemset2,Itemset3)
-#print(Itemset3)
-#print(monData.itemsetFreq([Itemset1,Itemset2,Itemset3]))
+    ##### TEST METHODE ITEMSETFREQ  #####
 
-######## Test de la classe Itemset #############
+    # Recuperation de la liste de singleton qui est une liste d'itemset de taille 1
+
+lst_itemset=monData.singleton()
+#print(lst_itemset)
+
+    # Recherche d'itemset frequent à partir d'une liste d'itemset de taille 1 et d'un minSup
+
+#print(monData.itemsetFreq(lst_itemset))
+
+#___________________________________________________________
+
+    ##### TEST APRIORI  #####
+
+#monData.aPriori(minsup=2)
+
+
+#_______________________________________________________________________________________________________________________
+
+######## TEST CLASS ITEMSET #############
 
 # Itemset herite de la classe set, elle prend en entree une liste_d'item
 # retourne une liste d'itemset
-monItemset1= Itemset([pain, lait, couches,coca])
-monItemset2 = Itemset([pain, pain, couches, cake, couches])
-monItemset3= Itemset([coca])
-monItemset4 = Itemset([pain,lait])
-monItemset5 = Itemset([pain, biere])
-monItemset6 = Itemset([couches, biere])
 
-#print(monItemset1)
-#print(monItemset2.lst_item[0].nomItem)
+Itemset1= Itemset([pain, lait, couches, coca])
+Itemset2 = Itemset([pain, pain, couches, cake, couches])
+Itemset3= Itemset([coca])
+Itemset4 = Itemset([pain, lait])
+Itemset5 = Itemset([pain, biere])
+Itemset6 = Itemset([couches, biere])
+Itemset8=Itemset([pain])
+
+
+#print(Itemset1)
+#print(Itemset2.lst_item[0].nomItem)
 #print(monItemset2)
 #print(monItemset3)
 
-##### Test de la méthode supportItemset #####
+# Recherche d'itemset frequent à partir d'une liste d'itemset de taille n et d'un minSup
 
-# creation d'un itemset de taille 1
+#lst_itemset2=[Itemset1,Itemset2,Itemset3,Itemset4,Itemset5,Itemset6]
+#print(monData.itemsetFreq(lst_itemset2))
 
-# ==> ne trouve pas pain dans la liste des produits?
-monItemset=Itemset([pain])
+#___________________________________________________________
 
-#monsupportItemset=monItemset.supportItemset(monData)
+    ##### TEST METHODE SUPPORT #####
+
+monsupportItemset=Itemset3.supportItemset(monData)
 #print(monsupportItemset)
 
-##### Test de la méthode unionItemset #####
+#___________________________________________________________
 
-#==> Nature de ce que retourne l'unionItemset???
+    ##### TEST METHODE UNIONITEMSET #####
 
-monUnionitemset=monItemset1.unionItemset(monItemset2)
+monUnionitemset=Itemset1.unionItemset(Itemset2)
 #print(monUnionitemset)
 
+#___________________________________________________________
 
-##### Test de la méthode unionValide #####
-# #test de union valide : les deux itemsets doivent etre de meme taille n et leur union doit etre de taille n+1
+    ##### TEST METHODE UNIONVALIDE #####
 
-#     #cas ou les deux itemsets sont de meme taille et leur union est de taille n+1
-#monUnionvalide1=monItemset4.unionValide(monItemset5)
+    # Les deux itemsets doivent etre de meme taille n et leur union doit etre de taille n+1
+
+    #cas ou les deux itemsets sont de meme taille et leur union est de taille n+1
+
+#monUnionvalide1=Itemset4.unionValide(Itemset5)
 #print(monUnionvalide1)
 
-#     #cas ou l'union des deux itemsets n'est pas de taille n+1
-#monUnionvalide2=monItemset4.unionValide(monItemset6)
+    #cas ou l'union des deux itemsets n'est pas de taille n+1
+
+#monUnionvalide2=Itemset4.unionValide(Itemset6)
 #print(monUnionvalide2)
 
-#     #cas ou les deux itemsets ne sont pas de meme taille
-#monUnionvalide3=monItemset3.unionValide(monItemset4)
+    #cas ou les deux itemsets ne sont pas de meme taille
+
+#monUnionvalide3=Itemset3.unionValide(Itemset4)
 #print(monUnionvalide3)
 
 # # pour conserver les items qui sont soit dans monItemset, soit dans monItemset2 = retirer les items qui sont dans les 2
 #print(monItemset ^ monItemset2)
 
+#___________________________________________________________
 
-##### Test de la méthode verifSubset #####
+##### TEST METHODE VERIFSUBSET #####
 
 #monverifSubset= monItemset.verifSubSet([pain, lait, biere])
 #print(monverifSubset)

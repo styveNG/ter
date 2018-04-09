@@ -1,4 +1,4 @@
-from item import Item
+#from item import Item
 
 # Permet de creer les transactions
 class Transaction:
@@ -9,11 +9,6 @@ class Transaction:
     #permet d'ajouter un item dans la liste d'item
     def ajouterItem(self, unItem):
         self.lst_item.append(unItem)
-
-    #IDEE: Creer une methode qui rajoute les spetech???
-    def ajouterSpetech(self):
-        self.lst_spetech=[]
-        pass
 
     #transforme chaque produit de la liste en item
     def ajouterListeProd(self, listeProd):

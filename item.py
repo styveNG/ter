@@ -5,16 +5,18 @@ class Item:
     def __repr__(self):
         return "{}: {}".format(self.nomItem, self.spetech)
 
-    #test d'equalite
-    #other=item2
-    def __eq__(self,other):
+    # creation de la methode d'equalite afin de comparer 2produits de meme nom
+    # et de meme spetech
+
+    # other: correspond a un second item
+
+    def __eq__(self, other):
         if self.nomItem==other.nomItem and self.spetech==other.spetech:
             return True
         else:
             return False
 
-    # utilisation de la mthode __hash__
-    # calcul de la signature
+    # permet de calculer la signature d'un objet
 
     def __hash__(self):
         return self.nomItem.__hash__()

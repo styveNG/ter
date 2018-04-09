@@ -11,15 +11,16 @@ class Itemset(set):
 
     # Doit afficher uniquement une liste d'item avec leur nom sans les spetech
     # --- PB n'affiche pas la liste generee grace au set
-    def __repr__(self):
-        lst_nomItem=[]
-        for num_item in range(0,len(self)):
-            lst_nomItem.append(self.lst_item[num_item].nomItem)
-        return "Itemset: {}".format(lst_nomItem)
+    # def __repr__(self):
+    #     lst_nomItem=[]
+    #     for num_item in range(0,len(self)):
+    #         lst_nomItem.append(self.lst_item[num_item].nomItem)
+    #     return lst_nomItem
 
 
     # Permet de determiner le support des Itemsets en fonction d'un dataset
     def supportItemset(self,dataset):
+
         # mettre un compeur initialisé à 0
         # boucle sur les transactions de dataset
                 # recuperer la liste des items de la transaction
