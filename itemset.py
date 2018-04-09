@@ -51,11 +51,9 @@ class Itemset(set):
     # de taille n sont frequents
     #les elts de lst_frq doivent etre de taille n-1
     # retourne un booleen
-    def verifSubSet(self,lst_frq): #retourne T / F
+    def verifSubset(self,lst_frq): #retourne T / F
         for item in self:
-            print(item)
             subset = self - Itemset([item])
-            print(subset)
             if not subset.issubset(lst_frq):   ## si au moins un des subsets de self ne fait pas partie de lst_frq
                 return False
             else:  ## si tous les subsets de self sont dans lst_frq
