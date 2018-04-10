@@ -173,6 +173,8 @@ monUnionitemset=Itemset1.unionItemset(Itemset2)
 
 ##### TEST METHODE VERIFSUBSET #####
 
+
+    ## pour rappel: comment sont définis les itemsets créés plus haut (quels items ils contiennent)
 # Itemset1= Itemset([pain, lait, couches, coca]) : taille 4
 # Itemset2 = Itemset([pain, pain, couches, cake, couches]) : taille 3
 # Itemset3= Itemset([coca]) : taille 1
@@ -185,7 +187,7 @@ monUnionitemset=Itemset1.unionItemset(Itemset2)
 ## on verifie que tous les subsets de taille 1 d'un itemset de taille 2 sont frequants
 monItemset1 = Itemset([pain, lait])
 
-monverifSubset=monItemset1.verifSubset([pain, lait])
+#monverifSubset=monItemset1.verifSubset([pain, lait])
 #print(monverifSubset)
 
 ## on vérifie que tous les subsets de taille 2 d'un itemset de taille 3 sont fréquents
@@ -193,6 +195,16 @@ monverifSubset=monItemset1.verifSubset([pain, lait])
 monItemset2 = Itemset([pain,lait,coca])
 monItemsetFreq1 = Itemset([pain,lait])
 monItemsetFreq2 = Itemset([pain,coca])
-monItemsetFreq3 = Itemset([lait,coca]) #essayer avc coca lait
+monItemsetFreq3 = Itemset([lait,coca]) #essayer avec coca lait
 
-monverifSubset2 = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
+    #cas où tous les subsets sont fréquents
+#monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3]) #censé retourner True
+#print(monverifSubset)
+
+    #cas où l'un des subsets est fréquent
+#monverifSubset2 = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2]) # censé retourner False
+#print(monverifSubset2)
+
+    #cas où aucun des subsets n'est fréquent
+#monverifSubset3 = monItemset2.verifSubset([Itemset5]) # censé retourner False
+#print(monverifSubset3) 
