@@ -47,15 +47,16 @@ class Dataset:
     # retourne une liste d'itemsets frequents
     def aPriori(self,minsup):
 
-        # Recuperation des singletons du dataset
+        # Recuperation les singletons du dataset
         liste_singleton=Dataset.singleton(self)
-        # On cree une liste vide d'itemset qui nous permettra de recuperer la liste des sinletons frequents
+
+        # On cree une liste vide d'itemset qui nous permettra de recuperer la liste des singletons frequents
         mesItemsetFrq=[]
 
         # Permet de recuperer la liste des Itemsets( de taille n+1)
         mescandidats=[]
 
-        # Pour chaque singleton (qui sont des itemset de taille 1) dans la liste des singletons Calculer le support
+        # Pour chaque singleton (qui sont des itemsets de taille 1) dans la liste des singletons Calculer le support
         for monSingleton in liste_singleton:
             mesSupports=monSingleton.supportItemset(self)
 
@@ -64,7 +65,7 @@ class Dataset:
                 if unSupport >= minsup:
                     mesItemsetFrq.append(monSingleton)
 
-                    # On recupere une liste d'itemset de taille n+1 frequent
+                    # On genere des itemsets de taille n+1 frequent que l'on stockent dans une liste d'itemset candidate
                     monCandidat=Itemset.supersetCand(mesItemsetFrq)
                     mescandidats.append(monCandidat)
 
@@ -73,20 +74,8 @@ class Dataset:
                     # on le rajoute dans la liste de candidat
                     for moncandidat in mescandidats:
                         supportCand=moncandidat.supportItemset(self)
-                        if supportCand>= minsup:
+                        if supportCand >= minsup:
                             mescandidats.append(moncandidat)
 
+        # On retourne une liste d'itemset de taille n+1 candidate pour une regle d'association
         return "Liste d'itemset (de taille n+1) frequent dans le data : \n {} ".format(mescandidats)
-
-
-#####################
-# PROGRAMME PRINCIPAL
-#####################
-
-
-
-
-
-
-# D1.itemsetFreq(lst_itemset,minsup)
-# retourne une lst itemset frequent qui est sous ensemble de la liste d'itemset en parametre
