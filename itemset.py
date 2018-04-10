@@ -51,35 +51,17 @@ class Itemset(set):
     # => les elts de lst_frq doivent etre de taille n-1
     # retourne un booleen
     def verifSubset(self,lst_itemset_frq): #retourne T / F
+        test = []  # variable qui va stocker les resultats de test de la presence du subset courant dans lst_itemset_frq
         for item in self:
-            subset = Itemset(self - Itemset([item]))  ## fonctionne bien jusqu'ici
-            print(subset)
-            test = []  #variable qui va stocker les resultats de test de la presence du subset courant dans lst_itemset_frq
+            subset = Itemset(self - Itemset([item]))
             if subset in lst_itemset_frq:
                 test.append(1)
-                print(test)
-            else: 
+            else:
                 test.append(0)
-                print(test)
         if 0 in test:
             return False
         else:
             return True
-            # if not subset in (lst_itemset_frq):   ## si au moins un des subsets de self ne fait pas partie de lst_frq
-            #     return False
-            # else:  ## si tous les subsets de self sont dans lst_frq
-            #     return False
-
-        # ne fait le test que sur le premier subset !!!! => logique car la condition if ne porte que sur le premier item
-        ## pourquoi apres le return la fonction ne remonte plus vers la boucle for?
-        ## le return marque la fin d'une fonction??
-
-        ## idee de solution: retirer un itemset à self (pour ainsi creer un premier subset de taille n-1
-        # si ce premier subset fait partie de lst_itemset_frq, on passe au deuxieme subset
-        # des qu'un subset ne fait pas partie de lst_itemset_frq, on s'arrete et on retourne False
-        # le problème est: comment générer ces subsets ?
-            #on sait que les subsets d'un itemset sont composés de l'itemset lui-meme auquel on a retiré un element (item)
-
 
     @classmethod
     #a initialiser: liste vide d'itemset cand
