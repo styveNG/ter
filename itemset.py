@@ -47,17 +47,28 @@ class Itemset(set):
         else: #cas ou les itemset sont de meme taille n et leur union est de taille n+1
             return self.unionItemset(monItemset)
 
-    # Permet de verifier que tous les subset de taille n-1 qui composent un itemset
-    # de taille n sont frequents
-    #les elts de lst_frq doivent etre de taille n-1
+    # Permet de verifier que TOUS les subset de taille n-1 qui composent un itemset de taille n sont frequents
+    # => les elts de lst_frq doivent etre de taille n-1
     # retourne un booleen
-    def verifSubset(self,lst_frq): #retourne T / F
+    def verifSubset(self,lst_itemset_frq): #retourne T / F
         for item in self:
-            subset = self - Itemset([item])
-            if not subset.issubset(lst_frq):   ## si au moins un des subsets de self ne fait pas partie de lst_frq
-                return False
-            else:  ## si tous les subsets de self sont dans lst_frq
+            subset = Itemset(self - Itemset([item]))  ## fonctionne bien jusqu'ici
+            print(subset)
+            while subset in lst_itemset_frq:
                 return True
+            # if not subset in (lst_itemset_frq):   ## si au moins un des subsets de self ne fait pas partie de lst_frq
+            #     return False
+            else:  ## si tous les subsets de self sont dans lst_frq
+                return False
+
+        # ne fait le test que sur le premier subset !!!! => logique car la condition if ne porte que sur le premier item
+        ## pourquoi apres le return la fonction ne remonte plus vers la boucle for?
+        ## le return marque la fin d'une fonction??
+
+        ## idee de solution: retirer un itemset à self (pour ainsi creer un premier subset de taille n-1
+        # si ce premier subset fait partie de lst_itemset_frq, on passe au deuxieme subset
+        # le problème est: comment générer ces subsets ?
+            #on sait que les subsets d'un itemset sont composés de l'itemset auquel on a retiré un element
 
     @classmethod
     #a initialiser: liste vide d'itemset cand
@@ -68,6 +79,7 @@ class Itemset(set):
         ## si cette condition est vérifiée, stocker l'itemset obtenu dans une liste
         ## on passe aux paires suivantes, meme démarche. si l'itemset est deja dans la liste, pas la peine de le rajouter de nouveau
         ## à la fin de la boucle, retourner la liste d'itemsets (qui doivent tous etre de taille n+1)
+        ## comment prendre des éléments d'une liste deux par deux????
         lst_superset = []
         for itemset1 in lst_itemset_frq:
             for itemset2 in lst_itemset_frq:
@@ -75,6 +87,7 @@ class Itemset(set):
                     union = itemset1.unionValide(itemset2)
                     if union.verifSubset(lst_itemset_frq):
                         lst_itemset_frq.append(union)
+        return lst_superset
 
 
 #####################
