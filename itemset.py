@@ -68,7 +68,7 @@ class Itemset(set):
         ## idee de solution: retirer un itemset à self (pour ainsi creer un premier subset de taille n-1
         # si ce premier subset fait partie de lst_itemset_frq, on passe au deuxieme subset
         # le problème est: comment générer ces subsets ?
-            #on sait que les subsets d'un itemset sont composés de l'itemset auquel on a retiré un element
+            #on sait que les subsets d'un itemset sont composés de l'itemset auquel on a retiré un element   
 
     @classmethod
     #a initialiser: liste vide d'itemset cand
