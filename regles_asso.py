@@ -23,12 +23,19 @@
 # La classe association prend en entree deux itemsets frequents de taille differente ou egale
 # et renvoie une association de la forme X→Y
 class Association:
-    def __init__(self, itemsetfreq1, itemsetfreq2):
-        self.itemsetfreq1=itemsetfreq1
-        self.itemsetfreq2=itemsetfreq2
+    def __init__(self, antecedent, consequent):
+        self.antecedent=antecedent
+        self.consequent=consequent
 
     def __repr__(self):
-        return "SI {} => {}".format(self.itemsetfreq1, self.itemsetfreq2)
+        return "SI {} => {}".format(self.antecedent, self.consequent)
+
+
+    def supportregle(self):
+        pass
+
+    def confiance(self):
+        pass
 
 
 #_________________________________________________________
@@ -39,6 +46,11 @@ class Association:
 #  i.e:  Itemset(biere,couche) => Itemset(lait)
 #        Itemset(biere, lait) = > Itemset(couches)
 #        Itemset(lait, couches) => Itemset(biere)
+
+# mettre la methode des regle d'asso dans itemset qui sera un self
+# itere sur la lst des itemset freq
+# on genere des itemetsets de taille n-1 et on recupere l'itemset retiré qu'on mettra en consequent
+
 
 # RAPPEL: on generera que des relations X=n et Y=1 ????
 # pas de regle pour les itemsetfre de taille 1
