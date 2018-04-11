@@ -9,9 +9,6 @@ class Itemset(set):
 
     # # => comment faire pour accéder à un élément d'un itemset??
 
-    # Doit afficher uniquement une liste d'item avec leur nom sans les spetech
-    # --- PB n'affiche pas la liste generee grace au set
-
     # Permet de determiner le support des Itemsets en fonction d'un dataset
     def supportItemset(self,dataset):
         # mettre un compeur initialisé à 0
@@ -47,34 +44,38 @@ class Itemset(set):
         else: #cas ou les itemset sont de meme taille n et leur union est de taille n+1
             return self.unionItemset(monItemset)
 
-    # Permet de verifier que tous les subset de taille n-1 qui composent un itemset
-    # de taille n sont frequents
-    #les elts de lst_frq doivent etre de taille n-1
+    # Permet de verifier que TOUS les subset de taille n-1 qui composent un itemset de taille n sont frequents
+    # => les elts de lst_frq doivent etre de taille n-1 (vérification non faite ici)
     # retourne un booleen
-    def verifSubset(self,lst_frq): #retourne T / F
+    def verifSubset(self,lst_itemset_frq): #retourne T / F
+        test = []  # variable qui va stocker les resultats de test de la presence du subset courant dans lst_itemset_frq
         for item in self:
-            subset = self - Itemset([item])
-            if not subset.issubset(lst_frq):   ## si au moins un des subsets de self ne fait pas partie de lst_frq
-                return False
-            else:  ## si tous les subsets de self sont dans lst_frq
-                return True
+            subset = Itemset(self - Itemset([item]))
+            if subset in lst_itemset_frq:
+                test.append(1)
+            else:
+                test.append(0)
+        if 0 in test:
+            return False
+        else:
+            return True
 
     @classmethod
-    #a initialiser: liste vide d'itemset cand
-    #prend une liste d'itemsets de meme taille en argument
-    def supersetCand(cls,lst_itemset_frq):
+    def supersetCand(cls,lst_itemset_frq):  #lst_itemset_frq: liste d'itemsets de meme taille
         ## prendre deux par deux des itemsets de lst_itemset_frq, en faire l'union. si l'union est de taille n+1 cf. unionValide,
         ## verifier que tous les subsets de cette union font partie de lst_itemset_frq (exemple concret où ce n'est pas le cas)
         ## si cette condition est vérifiée, stocker l'itemset obtenu dans une liste
         ## on passe aux paires suivantes, meme démarche. si l'itemset est deja dans la liste, pas la peine de le rajouter de nouveau
         ## à la fin de la boucle, retourner la liste d'itemsets (qui doivent tous etre de taille n+1)
-        lst_superset = []
+        ## comment prendre des éléments d'une liste deux par deux????
+        lst_superset = []   #liste vide de superset candidats
         for itemset1 in lst_itemset_frq:
             for itemset2 in lst_itemset_frq:
                 if itemset1 != itemset2:
                     union = itemset1.unionValide(itemset2)
-                    if union.verifSubset(lst_itemset_frq):
-                        lst_itemset_frq.append(union)
+                    if union.verifSubset(lst_itemset_frq) and union not in lst_superset :
+                        lst_superset.append(union)
+        return lst_superset
 
 
 #####################
