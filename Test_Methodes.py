@@ -208,12 +208,12 @@ monItemsetFreq3 = Itemset([lait,coca])
 #___________________________________________________________
 
     ##### TEST METHODE  DE CLASSE SUPERSETCAND #####
-superset = Itemset.supersetCand([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
-print(superset)
+#superset = Itemset.supersetCand([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
+#print(superset)
 
 
 #___________________________________________________________
 
     ##### TEST APRIORI  #####
 
-#monData.aPriori(minsup=2)
+print(monData.aPriori(minsup=2))
