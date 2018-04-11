@@ -38,10 +38,10 @@ class Association:
 # Par exemple pour un itemset freq (biere, lait couches), generer toutes les relations poissibles:
 #  i.e:  Itemset(biere,couche) => Itemset(lait)
 #        Itemset(biere, lait) = > Itemset(couches)
-#        Itemset(biere) => Itemset(lait, couche)
-#        Itemset(lait) => Itemset(biere, couches)
+#        Itemset(lait, couches) => Itemset(biere)
 
 # RAPPEL: on generera que des relations X=n et Y=1 ????
+# pas de regle pour les itemsetfre de taille 1
 
 
 # => Creer une methode qui prend en entree un support minimum et une confiance minimum,
