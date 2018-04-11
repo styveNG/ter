@@ -31,7 +31,7 @@ class Association:
         return "SI {} => {}".format(self.itemsetfreq1, self.itemsetfreq2)
 
 
-#______________________________________________________
+#_________________________________________________________
 
 # => Creer une methode qui genere des relations :
 
