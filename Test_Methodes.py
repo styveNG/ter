@@ -87,11 +87,6 @@ lst_itemset=monData.singleton()
 
 #print(monData.itemsetFreq(lst_itemset))
 
-#___________________________________________________________
-
-    ##### TEST APRIORI  #####
-
-#monData.aPriori(minsup=2)
 
 
 #_______________________________________________________________________________________________________________________
@@ -195,7 +190,8 @@ monItemset1 = Itemset([pain, lait])
 monItemset2 = Itemset([pain,lait,coca])
 monItemsetFreq1 = Itemset([pain,lait])
 monItemsetFreq2 = Itemset([pain,coca])
-monItemsetFreq3 = Itemset([lait,coca]) #essayer avec coca lait
+monItemsetFreq3 = Itemset([lait,coca])
+    #Itemset([lait,coca]) = Itemset([coca,lait])
 
     #cas où tous les subsets sont fréquents
 #monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3]) #censé retourner True
@@ -207,4 +203,17 @@ monItemsetFreq3 = Itemset([lait,coca]) #essayer avec coca lait
 
     #cas où aucun des subsets n'est fréquent
 #monverifSubset3 = monItemset2.verifSubset([Itemset5]) # censé retourner False
-#print(monverifSubset3) 
+#print(monverifSubset3)
+
+#___________________________________________________________
+
+    ##### TEST METHODE  DE CLASSE SUPERSETCAND #####
+superset = Itemset.supersetCand([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
+print(superset)
+
+
+#___________________________________________________________
+
+    ##### TEST APRIORI  #####
+
+#monData.aPriori(minsup=2)
