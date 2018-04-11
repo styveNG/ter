@@ -194,8 +194,8 @@ monItemsetFreq3 = Itemset([lait,coca])
     #Itemset([lait,coca]) = Itemset([coca,lait])
 
     #cas où tous les subsets sont fréquents
-#monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3]) #censé retourner True
-#print(monverifSubset)
+monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3]) #censé retourner True
+print(monverifSubset)
 
     #cas où l'un des subsets est fréquent
 #monverifSubset2 = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2]) # censé retourner False
@@ -216,4 +216,4 @@ monItemsetFreq3 = Itemset([lait,coca])
 
     ##### TEST APRIORI  #####
 
-print(monData.aPriori(minsup=2))
+#print(monData.aPriori(minsup=2))

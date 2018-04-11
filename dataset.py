@@ -63,5 +63,7 @@ class Dataset:
             #Génération des supersets fréquents
             liste_frq = self.itemsetFreq(liste_superset)
             #print(liste_frq)
+            #memoriser dans une autre liste ce qu'on obtient dans itemsetfrq: itemset avec des tailles differentes
+            #tous les mettre dans une meme grande liste, et cest cette derniere liste qu'on retourne
 
         return liste_frq
