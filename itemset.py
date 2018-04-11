@@ -67,14 +67,14 @@ class Itemset(set):
         ## si cette condition est vérifiée, stocker l'itemset obtenu dans une liste
         ## on passe aux paires suivantes, meme démarche. si l'itemset est deja dans la liste, pas la peine de le rajouter de nouveau
         ## à la fin de la boucle, retourner la liste d'itemsets (qui doivent tous etre de taille n+1)
-        ## comment prendre des éléments d'une liste deux par deux????
+        ## comment prendre des éléments d'une liste deux par deux???? (résolu)
         lst_superset = []   #liste vide de superset candidats
         for itemset1 in lst_itemset_frq:
             for itemset2 in lst_itemset_frq:
                 if itemset1 != itemset2:
                     union = itemset1.unionValide(itemset2)
-                    if union.verifSubset(lst_itemset_frq) and union not in lst_superset :
-                        lst_superset.append(union)
+                    if union is not None and union.verifSubset(lst_itemset_frq) and union not in lst_superset:
+                            lst_superset.append(union)
         return lst_superset
 
 
