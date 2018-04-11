@@ -4,7 +4,7 @@
 # ==> Une règle d'association est mesurée en utilisant un support minimum et une confiance minimum
 
 ### Soit X un itemset frequent de taille n et Y un itemset frequent de taille m
-### !!!!!! n peut etre egale a m !!!!!!!!!!
+### !!!!!! n et m peuvent etre egales !!!!!!!!!!
 
 ## Le support de la regle d'association X→Y est egale au support de l'itemset frequent (X,Y) : de taille n+m
 ## divisé par le nombre total de transactions presentes dans le data
@@ -13,7 +13,7 @@
 
 ## La confiance de la regle d'association X→Y, est egale au support de l'itemset frequent (X,Y) : de taille n+m
 ## divisé par le support de X
-#    confiance(X→Y)= support(X,Y) / sup(X)
+#    confiance(X→Y)= support(X,Y) / support(X)
 
 
 #_______________________________________________________________________________________________________________________
@@ -41,16 +41,11 @@ class Association:
 #        Itemset(biere) => Itemset(lait, couche)
 #        Itemset(lait) => Itemset(biere, couches)
 
+# RAPPEL: on generera que des relations X=n et Y=1 ????
+
 
 # => Creer une methode qui prend en entree un support minimum et une confiance minimum,
-#    qui calcul le support d'un itemset frequent (ex: Itemset(biere, lait couches))
-
-#    si le support de l'itemset est >= au support minimun:
-        # on genere des relations
-        # pour chaque relation on calcul la confiance:
-                # si la confiance est >= a la confiance minimum:
-                        # on retourne une association
-
+#    qui recupere le support d'un itemset frequent (ex: Itemset(biere, lait couches))
 
 
 

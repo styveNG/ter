@@ -65,36 +65,3 @@ class Dataset:
             #print(liste_frq)
 
         return liste_frq
-
-        # # Recuperation les singletons du dataset
-        # liste_singleton = Dataset.singleton(self)
-        #
-        # # On cree une liste vide d'itemset qui nous permettra de recuperer la liste des singletons frequents
-        # mesItemsetFrq=[]
-        #
-        # # Permet de recuperer la liste des Itemsets(de taille n+1)
-        # mescandidats=[]
-        #
-        # # Pour chaque singleton (qui sont des itemsets de taille 1) dans la liste des singletons Calculer le support
-        # for monSingleton in liste_singleton:
-        #     mesSupports=monSingleton.supportItemset(self)
-        #
-        #     # Pour chaque support(des singletons) >= au minSup, on rajoute le singleton dans mesItemsetFreq
-        #     for unSupport in [mesSupports]:
-        #         if unSupport >= minsup:
-        #             mesItemsetFrq.append(monSingleton)
-        #
-        #             # On genere des itemsets de taille n+1 frequent que l'on stockent dans une liste d'itemset candidate
-        #             monCandidat=Itemset.supersetCand(mesItemsetFrq)
-        #             mescandidats.append(monCandidat)
-        #
-        #             # Pour un candidat dans la liste d'itemset (de taille n+1) frequent, calculer le support
-        #             # si le support d'un candidat est superieur ou egal au minsup
-        #             # on le rajoute dans la liste de candidat
-        #             for moncandidat in mescandidats:
-        #                 supportCand=moncandidat.supportItemset(self)
-        #                 if supportCand >= minsup:
-        #                     mescandidats.append(moncandidat)
-        #
-        # # On retourne une liste d'itemset de taille n+1 candidate pour une regle d'association
-        # return "Liste d'itemset (de taille n+1) frequent dans le data : \n {} ".format(mescandidats)
