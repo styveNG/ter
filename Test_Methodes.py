@@ -47,10 +47,38 @@ monCaddie3.ajouterItem(pain)
 monCaddie3.ajouterItem(oeufs)
 #print(monCaddie3)
 
+monCaddie4= Transaction("T4")
+monCaddie4.ajouterItem(pain)
+monCaddie4.ajouterItem(lait)
+
+monCaddie5= Transaction("T5")
+monCaddie5.ajouterItem(pain)
+monCaddie5.ajouterItem(couches)
+monCaddie5.ajouterItem(biere)
+monCaddie5.ajouterItem(oeufs)
+
+monCaddie6= Transaction("T6")
+monCaddie6.ajouterItem(lait)
+monCaddie6.ajouterItem(couches)
+monCaddie6.ajouterItem(biere)
+monCaddie6.ajouterItem(coca)
+
+monCaddie7= Transaction("T7")
+monCaddie7.ajouterItem(pain)
+monCaddie7.ajouterItem(lait)
+monCaddie7.ajouterItem(couches)
+monCaddie7.ajouterItem(biere)
+
+monCaddie8= Transaction("T8")
+monCaddie8.ajouterItem(pain)
+monCaddie8.ajouterItem(lait)
+monCaddie8.ajouterItem(couches)
+monCaddie8.ajouterItem(coca)
+
 # Methode2: Creation d'une transaction a l'aide d'une liste de produits transformer en item !!!!! AREVOIR !!!!
 
-monCaddie4 = Transaction("T4")
-monCaddie4.ajouterListeProd([Item("pommes",["Golden","10kg"]), Item("pain")])
+monCaddie9 = Transaction("T9")
+monCaddie9.ajouterListeProd([Item("pommes",["Golden","10kg"]), Item("pain")])
 #print(monCaddie4)
 
 #print(monCaddie4.lst_item[1].nomItem)   #permet d'accéder à l'item d'indice 1 du caddie 4
@@ -67,6 +95,13 @@ monData.ajouterTransaction(monCaddie2)
 monData.ajouterTransaction(monCaddie3)
 monData.ajouterTransaction(monCaddie4)
 #print(monData)
+
+monData2=Dataset()
+monData2.ajouterTransaction(monCaddie4)
+monData2.ajouterTransaction(monCaddie5)
+monData2.ajouterTransaction(monCaddie6)
+monData2.ajouterTransaction(monCaddie7)
+monData2.ajouterTransaction(monCaddie8)
 
 #___________________________________________________________
 
@@ -195,7 +230,7 @@ monItemsetFreq3 = Itemset([lait,coca])
 
     #cas où tous les subsets sont fréquents
 monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3]) #censé retourner True
-print(monverifSubset)
+#print(monverifSubset)
 
     #cas où l'un des subsets est fréquent
 #monverifSubset2 = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2]) # censé retourner False
@@ -217,3 +252,4 @@ print(monverifSubset)
     ##### TEST APRIORI  #####
 
 #print(monData.aPriori(minsup=2))
+print(monData2.aPriori(minsup=2))
