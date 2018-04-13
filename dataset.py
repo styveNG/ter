@@ -5,11 +5,15 @@ from itemset import Itemset
 
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
 class Dataset:
+    nb_transaction = 0   #compteur de transaction: attribut de classe
+    # utile ou pas pour avoir le nombre de transactions contenues dans un dataset ??
+
     def __init__(self):
         self.lst_transactions=[]
 
-    # Ajoute des transactions dans le data
+    # méthode pour ajouter des transactions dans le data
     def ajouterTransaction(self,maTransaction):
+        Dataset.nb_transaction += 1  # compteur incrémenté à chaque appel de l'initialisateur de Transaction:
         self.lst_transactions.append(maTransaction)
 
     def __repr__(self):
@@ -32,6 +36,7 @@ class Dataset:
 
     # cree une liste d'itemset frequent a partir d'une liste d'itemset et d'un minSup
     # calcul le support et ceux qui verifie la condition sont rajoutés
+    # retourne une liste d'itemsets fréquents
     def itemsetFreq(self, lst_itemset, minsup=2):
         lst_itemsetfreq=[]
         for monItemset in lst_itemset:
@@ -40,60 +45,33 @@ class Dataset:
             #print(supportItemset)
             if (supportItemset) >= minsup:
                 lst_itemsetfreq.append(monItemset)
-        return " Les itemsets frequents dans ce Data sont : \n {}".format(lst_itemsetfreq)
+        return lst_itemsetfreq
 
 
     #combinaison de toutes les methodes precedentes
     # retourne une liste d'itemsets frequents
+    # il faut faire une boucle
     def aPriori(self,minsup):
 
-        # Recuperation des singleton du dataset
-        liste_singleton=Dataset.singleton(self)
-        # On cree une liste vide d'itemset qu'on retournera??
-        mesItemsetFrq=[]
-        # Pour chaque singleton (qui sont des itemset de taille 1) dans la liste des singleton
-        # Calculer le support
-        for monSingleton in liste_singleton:
-            mesSupports=monSingleton.supportItemset(self)
-            # Pour chaque support(des singletons) >= au minSup, on rajoute le singleton dans mesItemsetFreq
-            for unSupport in mesSupports:
-                if unSupport >= minsup:
-                    mesItemsetFrq.append(monSingleton)
-                    # Pour chaque itemeset(singleton) dans mesItemsetFreq, faire une union d'itemset
-                    # Pas tres sur de cette boucle
-                    mesUnions=[]
-                    for monSingleton in mesItemsetFrq:
-                        uneUnion=monSingleton.unionItemset(monSingleton)
-                        mesUnions.append(uneUnion)
+        # Recuperation des singletons du dataset
+        liste_singleton=self.singleton()
 
-                        # Pour une union verifier qu'elle est valide
-                        # Pas sur de cette boucle non plus
-                        for uneUnion in mesUnions:
-                            monUnionvalide=uneUnion.unionValide(uneUnion)
-                            mesUnions.append(monUnionvalide)
-                            # pour chaque unionValide  il faut verifier que tous les subsets sont frequents
-                            # et calculer le support de l'union
-                            for monUnionvalide in mesUnions:
-                                monUnionvalide.verifSubset(monUnionvalide)
-                                SupUnionvalide=monUnionvalide.supportItemset(self)
-                                if SupUnionvalide >=minsup:
-                                    mesItemsetFrq.append(monUnionvalide)
+        # Récupération des singletons frequents
+        liste_frq = self.itemsetFreq(liste_singleton)
 
+        while len(liste_frq) >= 2:
+            #Génération de tous les supersets
+            liste_superset = Itemset.supersetCand(liste_frq)
+            #print(liste_superset)
 
-        return mesItemsetFrq
-        pass
+            #Génération des supersets fréquents
+            liste_frq = self.itemsetFreq(liste_superset)
+            #print(liste_frq)
+            #memoriser dans une autre liste ce qu'on obtient dans itemsetfrq: itemset avec des tailles differentes
+            #tous les mettre dans une meme grande liste, et cest cette derniere liste qu'on retourne
 
+            #vide = []
+            if liste_frq != []:
+                liste_itemset = liste_frq
 
-#####################
-# PROGRAMME PRINCIPAL
-#####################
-
-
-
-## essai de push
-
-
-
-
-# D1.itemsetFreq(lst_itemset,minsup)
-# retourne une lst itemset frequent qui est sous ensemble de la liste d'itemset en parametre
+        return liste_itemset
