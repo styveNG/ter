@@ -15,19 +15,6 @@ class Transaction:
         for produit in listeProd:
             self.ajouterItem(produit) #appel à la méthode ajouter item
 
-
     def __repr__(self):
         return "{} : {}".format(self.nom_transac,self.lst_item)
-
-
-
-
-
-
-#####################
-# PROGRAMME PRINCIPAL
-#####################
-
-
-
 
