@@ -39,7 +39,8 @@ class Itemset(set):
             print("Les itemsets ne sont pas de la meme taille.")
             return None
         elif len(self.unionItemset(monItemset)) != len(self) +1:
-            print("L'union de ces deux itemsets n'est pas valide.")
+            #print("L'union de ces deux itemsets n'est pas valide.")
+                #on commente cette ligne sinon s'affiche dans le resultat de a priori
             return None
         else: #cas ou les itemset sont de meme taille n et leur union est de taille n+1
             return self.unionItemset(monItemset)
