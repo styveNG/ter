@@ -66,4 +66,8 @@ class Dataset:
             #memoriser dans une autre liste ce qu'on obtient dans itemsetfrq: itemset avec des tailles differentes
             #tous les mettre dans une meme grande liste, et cest cette derniere liste qu'on retourne
 
-        return liste_frq
+            #vide = []
+            if liste_frq != []:
+                liste_itemset = liste_frq
+
+        return liste_itemset
