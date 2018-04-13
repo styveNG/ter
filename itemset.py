@@ -61,6 +61,17 @@ class Itemset(set):
         else:
             return True
 
+    #méthode pour générer toutes les règles d'association dérivées d'un itemset (supposé fréquent par rapport à un dataset)
+    #que doit retourner cette méthode? une liste?
+    # def regles_asso(self):
+    #     liste_asso = []
+    #     for item in self:
+    #         antecedent = Itemset(self - Itemset([item]))
+    #         consequent = Itemset([item])
+    #         asso =
+    #         liste_asso.append(asso)
+    #     return liste_asso
+
     @classmethod
     def supersetCand(cls,lst_itemset_frq):  #lst_itemset_frq: liste d'itemsets de meme taille
         ## prendre deux par deux des itemsets de lst_itemset_frq, en faire l'union. si l'union est de taille n+1 cf. unionValide,
@@ -75,21 +86,6 @@ class Itemset(set):
                 if itemset1 != itemset2:
                     union = itemset1.unionValide(itemset2)
                     if union is not None and union.verifSubset(lst_itemset_frq) and union not in lst_superset:
-                            lst_superset.append(union)
+                        lst_superset.append(union)
         return lst_superset
 
-
-#####################
-# PROGRAMME PRINCIPAL
-#####################
-# * IS: itemset quelconque
-# D1: dataset
-#IS.supportItemset(D1)
-# Itemset.superSetcand(lst_itemset_freq) ; lst_itemset_freq: composée d'elt de taille n
-# retourne une liste d'itemset
-
-
-
-
-# #test de verifSubset
-# #monItemset.verifSubSet([pain, lait, biere])
