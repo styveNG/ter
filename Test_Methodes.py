@@ -2,10 +2,12 @@ from item import Item
 from itemset import Itemset
 from dataset import Dataset
 from transaction import Transaction
+from regles_asso import Association
 
 #_______________________________________________________________________________________________________________________
 
-######## TEST CLASS ITEM #############
+    #############################################
+    ######## TEST CLASS ITEM #############
 
 # Creation des items
 
@@ -20,7 +22,8 @@ cake = Item("cake")
 
 #_______________________________________________________________________________________________________________________
 
-######## TEST CLASS TRANSACTION #############
+    #############################################
+    ######## TEST CLASS TRANSACTION #############
 
 # Methode1: Creation d'une transaction avec des items existants (cf.CLASS ITEM)
 
@@ -85,7 +88,8 @@ monCaddie9.ajouterListeProd([Item("pommes",["Golden","10kg"]), Item("pain")])
 
 #_______________________________________________________________________________________________________________________
 
-######## TEST CLASS DATASET #############
+    #############################################
+    ######## TEST CLASS DATASET #############
 
 # Creation du dataset
 
@@ -105,13 +109,13 @@ monData2.ajouterTransaction(monCaddie8)
 
 #___________________________________________________________
 
-    ##### TEST METHODE SINGLETON #####
+    ##### TEST METHODE SINGLETON (Dataset) #####
 
 #print(monData.singleton())
 
 #___________________________________________________________
 
-    ##### TEST METHODE ITEMSETFREQ  #####
+    ##### TEST METHODE ITEMSETFREQ (Dataset) #####
 
     # Recuperation de la liste de singleton qui est une liste d'itemset de taille 1
 
@@ -126,7 +130,8 @@ lst_itemset=monData.singleton()
 
 #_______________________________________________________________________________________________________________________
 
-######## TEST CLASS ITEMSET #############
+    #############################################
+    ######## TEST CLASS ITEMSET #############
 
 # Itemset herite de la classe set, elle prend en entree une liste_d'item
 # retourne une liste d'itemset
@@ -152,21 +157,21 @@ Itemset8=Itemset([pain])
 
 #___________________________________________________________
 
-    ##### TEST METHODE SUPPORT #####
+    ##### TEST METHODE SUPPORT (Itemset) #####
 
 monsupportItemset=Itemset3.supportItemset(monData)
 #print(monsupportItemset)
 
 #___________________________________________________________
 
-    ##### TEST METHODE UNIONITEMSET #####
+    ##### TEST METHODE UNIONITEMSET (Itemset) #####
 
 monUnionitemset=Itemset1.unionItemset(Itemset2)
 #print(monUnionitemset)
 
 #___________________________________________________________
 
-    ##### TEST METHODE UNIONVALIDE #####
+    ##### TEST METHODE UNIONVALIDE (Itemset) #####
 
     # Les deux itemsets doivent etre de meme taille n et leur union doit etre de taille n+1
 
@@ -201,7 +206,7 @@ monUnionitemset=Itemset1.unionItemset(Itemset2)
 
 #___________________________________________________________
 
-##### TEST METHODE VERIFSUBSET #####
+    ##### TEST METHODE VERIFSUBSET (Itemset) #####
 
 
     ## pour rappel: comment sont définis les itemsets créés plus haut (quels items ils contiennent)
@@ -242,14 +247,26 @@ monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monI
 
 #___________________________________________________________
 
-    ##### TEST METHODE  DE CLASSE SUPERSETCAND #####
+    ##### TEST METHODE  DE CLASSE SUPERSETCAND (Itemset) #####
 #superset = Itemset.supersetCand([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
 #print(superset)
 
 
 #___________________________________________________________
 
-    ##### TEST APRIORI  #####
+    ##### TEST REGLES_ASSO (Itemset) #####
+#print(monItemset2.regles_asso())
+
+#_______________________________________________________________________________________________________________________
+
+    ##### TEST APRIORI (Dataset) #####
 
 #print(monData.aPriori(minsup=2))
-print(monData2.aPriori(minsup=2))
+#print(monData2.aPriori(minsup=2))
+
+#_______________________________________________________________________________________________________________________
+
+    #############################################
+    ######## TEST CLASS REGLES_ASSO #############
+monAsso = Association(monItemset2, Itemset3)
+print(monAsso)
