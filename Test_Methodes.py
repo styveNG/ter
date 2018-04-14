@@ -2,7 +2,7 @@ from item import Item
 from itemset import Itemset
 from dataset import Dataset
 from transaction import Transaction
-from regles_asso import Association
+from association import Association
 
 #_______________________________________________________________________________________________________________________
 
