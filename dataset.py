@@ -5,11 +5,15 @@ from itemset import Itemset
 
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
 class Dataset:
+    nb_transaction = 0   #compteur de transaction: attribut de classe
+    # utile ou pas pour avoir le nombre de transactions contenues dans un dataset ??
+
     def __init__(self):
         self.lst_transactions=[]
 
-    # Ajoute des transactions dans le data
+    # méthode pour ajouter des transactions dans le data
     def ajouterTransaction(self,maTransaction):
+        Dataset.nb_transaction += 1  # compteur incrémenté à chaque appel de l'initialisateur de Transaction:
         self.lst_transactions.append(maTransaction)
 
     def __repr__(self):
