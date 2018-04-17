@@ -126,7 +126,10 @@ lst_itemset=monData.singleton()
 
 #print(monData.itemsetFreq(lst_itemset))
 
+#___________________________________________________________
 
+    ##### TEST METHODE NBTRANSACTION (Dataset) #####
+#print(monData2.nbTransactions())
 
 #_______________________________________________________________________________________________________________________
 
@@ -143,7 +146,6 @@ Itemset4 = Itemset([pain, lait])
 Itemset5 = Itemset([pain, biere])
 Itemset6 = Itemset([couches, biere])
 Itemset8=Itemset([pain])
-
 
 #print(Itemset1)
 #print(Itemset2.lst_item[0].nomItem)
@@ -251,12 +253,6 @@ monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monI
 #superset = Itemset.supersetCand([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
 #print(superset)
 
-
-#___________________________________________________________
-
-    ##### TEST REGLES_ASSO (Itemset) #####
-#print(monItemset2.regles_asso())
-
 #_______________________________________________________________________________________________________________________
 
     ##### TEST APRIORI (Dataset) #####
@@ -267,6 +263,21 @@ monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monI
 #_______________________________________________________________________________________________________________________
 
     #############################################
-    ######## TEST CLASS REGLES_ASSO #############
-monAsso = Association(monItemset2, Itemset3)
-print(monAsso)
+    ######## TEST CLASS ASSOCIATION #############
+
+monItemset9=Itemset([lait,couches])
+monItemset10=Itemset([biere])
+
+monAsso = Association(monItemset9, monItemset10)
+#print(monAsso)
+
+#___________________________________________________________
+
+    ##### TEST METHODE SUPPORTREGLE (Association) #####
+#print(monAsso.supportregle(monData2))
+
+
+#___________________________________________________________
+
+    ##### TEST METHODE CONFIANCE (Association) #####
+print(monAsso.confiance(monData2))
