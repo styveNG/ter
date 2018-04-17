@@ -31,20 +31,17 @@ class Association:
     def __repr__(self):
         return "{}      =>      {}".format(self.antecedent, self.consequent)
 
-    def supportregle(self):
-        # union = self.antecedent.unionItemset(self.consequent)
-        #     #comment faire pour préciser le dataset sur lequel on travaille?
-        # support = union.supportItemset() / unDataset.nbTransactions()
-        #     #comment récupérer le nombre de transaction?
-        # return support
-        pass
+    def supportregle(self, unDataset):
+        union = self.antecedent.unionItemset(self.consequent)
+        print(union.supportItemset(unDataset))
+        support = union.supportItemset(unDataset) / unDataset.nbTransactions()
+        return support
 
-    def confiance(self):
-        # union = self.antecedent.unionItemset(self.consequent)
-        #     # comment faire pour préciser le dataset sur lequel on travaille?
-        # conf = union.supportItemset() / self.antecedent.supportItemset()
-        # return conf
-        pass
+
+    def confiance(self, unDataset):
+        union = self.antecedent.unionItemset(self.consequent)
+        conf = union.supportItemset(unDataset) / self.antecedent.supportItemset(unDataset)
+        return conf
 
 
 #_________________________________________________________
