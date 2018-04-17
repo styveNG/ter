@@ -5,15 +5,11 @@ from itemset import Itemset
 
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
 class Dataset:
-    nb_transaction = 0   #compteur de transaction: attribut de classe
-    # utile ou pas pour avoir le nombre de transactions contenues dans un dataset ??
-
     def __init__(self):
         self.lst_transactions=[]
 
     # méthode pour ajouter des transactions dans le data
     def ajouterTransaction(self,maTransaction):
-        Dataset.nb_transaction += 1  # compteur incrémenté à chaque appel de l'initialisateur de Transaction:
         self.lst_transactions.append(maTransaction)
 
     def __repr__(self):
@@ -46,6 +42,13 @@ class Dataset:
             if (supportItemset) >= minsup:
                 lst_itemsetfreq.append(monItemset)
         return lst_itemsetfreq
+
+    #méthode qui returne le nombre de transactions dasn un dataset
+    def nbTransactions(self):
+        nbTransa = 0
+        for transaction in self.lst_transactions:
+            nbTransa += 1
+        return nbTransa
 
 
     #combinaison de toutes les methodes precedentes
