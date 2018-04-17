@@ -276,8 +276,17 @@ monAsso = Association(monItemset9, monItemset10)
     ##### TEST METHODE SUPPORTREGLE (Association) #####
 #print(monAsso.supportregle(monData2))
 
-
 #___________________________________________________________
 
     ##### TEST METHODE CONFIANCE (Association) #####
-print(monAsso.confiance(monData2))
+#print(monAsso.confiance(monData2))
+
+#_______________________________________________________________________________________________________________________
+
+    ##### TEST METHODE REGLES_ASSO (Itemset) #####
+#print(monItemset2.regles_asso())
+
+#_______________________________________________________________________________________________________________________
+
+    ##### TEST METHODE ASSOCIATIONS_VALIDES (Itemset) #####
+print(monData2.associations_valides(0.2, 0.5))

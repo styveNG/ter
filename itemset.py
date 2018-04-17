@@ -1,6 +1,7 @@
 # from item import Item
 # from dataset import Dataset
 # from transaction import Transaction
+from association import  Association
 
 # la classe Itemset herite de la class set
 class Itemset(set):
@@ -63,14 +64,14 @@ class Itemset(set):
 
     #méthode pour générer toutes les règles d'association dérivées d'un itemset (supposé fréquent par rapport à un dataset)
     #que doit retourner cette méthode? une liste?
-    # def regles_asso(self):
-    #     liste_asso = []
-    #     for item in self:
-    #         antecedent = Itemset(self - Itemset([item]))
-    #         consequent = Itemset([item])
-    #         asso =
-    #         liste_asso.append(asso)
-    #     return liste_asso
+    def regles_asso(self):
+        liste_regles = []
+        for item in self:
+            antecedent = Itemset(self - Itemset([item]))
+            consequent = Itemset([item])
+            asso = Association(antecedent, consequent)
+            liste_regles.append(asso)
+        return liste_regles
 
     @classmethod
     def supersetCand(cls,lst_itemset_frq):  #lst_itemset_frq: liste d'itemsets de meme taille

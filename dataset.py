@@ -78,3 +78,14 @@ class Dataset:
                 liste_itemset = liste_frq
 
         return liste_itemset
+
+    #méthode qui retourne la liste des règles d'association qui vérifient le minsup et le minconf
+    #est-ce que les règles d'association qui découlent des itemset issus de apriori vérifient forcément minsup et minconf?
+    def associations_valides(self, minsup, minconf):
+        liste_asso = []
+        for itemset in self.aPriori(minsup):
+            for regle in itemset.regles_asso():
+                print(regle, regle.supportregle(self), regle.confiance(self))
+                if regle.supportregle(self) >= minsup and regle.confiance(self) >= minconf:
+                    liste_asso.append(regle)
+        return liste_asso

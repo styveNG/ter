@@ -33,7 +33,6 @@ class Association:
 
     def supportregle(self, unDataset):
         union = self.antecedent.unionItemset(self.consequent)
-        print(union.supportItemset(unDataset))
         support = union.supportItemset(unDataset) / unDataset.nbTransactions()
         return support
 
@@ -43,13 +42,12 @@ class Association:
         conf = union.supportItemset(unDataset) / self.antecedent.supportItemset(unDataset)
         return conf
 
-
 #_________________________________________________________
 
 # => Creer une methode qui genere des relations :
 
 # Par exemple pour un itemset freq (biere, lait couches), generer toutes les relations possibles:
-#  i.e:  Itemset(biere,couche) => Itemset(lait)
+#  i.e:  Itemset(biere, couches) => Itemset(lait)
 #        Itemset(biere, lait) = > Itemset(couches)
 #        Itemset(lait, couches) => Itemset(biere)
 
@@ -63,4 +61,4 @@ class Association:
 
 
 # => Creer une methode qui prend en entree un support minimum et une confiance minimum,
-#    qui recupere le support d'un itemset frequent (ex: Itemset(biere, lait couches))
+#    qui recupere le support d'un itemset frequent (ex: Itemset(biere, lait, couches))
