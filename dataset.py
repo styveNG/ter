@@ -85,7 +85,6 @@ class Dataset:
         liste_asso = []
         for itemset in self.aPriori(minsup):
             for regle in itemset.regles_asso():
-                print(regle, regle.supportregle(self), regle.confiance(self))
                 if regle.supportregle(self) >= minsup and regle.confiance(self) >= minconf:
                     liste_asso.append(regle)
         return liste_asso
