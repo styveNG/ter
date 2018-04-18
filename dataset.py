@@ -45,22 +45,20 @@ class Dataset:
 
     #méthode qui returne le nombre de transactions dasn un dataset
     def nbTransactions(self):
-        nbTransa = 0
-        for transaction in self.lst_transactions:
-            nbTransa += 1
-        return nbTransa
-
+        return len(self.lst_transactions)
 
     #combinaison de toutes les methodes precedentes
     # retourne une liste d'itemsets frequents
     # il faut faire une boucle
     def aPriori(self,minsup):
+        liste_itemset = []
 
         # Recuperation des singletons du dataset
         liste_singleton=self.singleton()
 
         # Récupération des singletons frequents
         liste_frq = self.itemsetFreq(liste_singleton)
+        liste_itemset.extend(liste_frq)
 
         while len(liste_frq) >= 2:
             #Génération de tous les supersets
@@ -75,7 +73,7 @@ class Dataset:
 
             #vide = []
             if liste_frq != []:
-                liste_itemset = liste_frq
+                liste_itemset.extend(liste_frq)
 
         return liste_itemset
 

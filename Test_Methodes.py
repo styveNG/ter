@@ -289,4 +289,4 @@ monAsso = Association(monItemset9, monItemset10)
 #_______________________________________________________________________________________________________________________
 
     ##### TEST METHODE ASSOCIATIONS_VALIDES (Itemset) #####
-print(monData2.associations_valides(0.2, 0.5))
+print(monData2.associations_valides(minsup=0.2, minconf=0.5))

@@ -66,11 +66,13 @@ class Itemset(set):
     #que doit retourner cette méthode? une liste?
     def regles_asso(self):
         liste_regles = []
-        for item in self:
-            antecedent = Itemset(self - Itemset([item]))
-            consequent = Itemset([item])
-            asso = Association(antecedent, consequent)
-            liste_regles.append(asso)
+        #si l'itemset est de taille 1, return une liste vide
+        if len(self) != 1:
+            for item in self:
+                antecedent = Itemset(self - Itemset([item]))
+                consequent = Itemset([item])
+                asso = Association(antecedent, consequent)
+                liste_regles.append(asso)
         return liste_regles
 
     @classmethod
