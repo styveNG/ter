@@ -7,14 +7,14 @@ class Itemset(set):
 
 
     # Permet de determiner le support des Itemsets en fonction d'un dataset
-    def supportItemset(self,dataset):
+    def supportItemset(self,unDataset):
         # mettre un compeur initialisé à 0
         # boucle sur les transactions de dataset
                 # recuperer la liste des items de la transaction
                 # en faire un itemset ( )
                 # utiliser .issubset => si vaut TRUE, rajouter 1 au compteur
         support = 0
-        for transaction in dataset.lst_transactions:
+        for transaction in unDataset.lst_transactions:
             lst_item = transaction.lst_item
             itemset = Itemset(lst_item)
             if self.issubset(itemset):
