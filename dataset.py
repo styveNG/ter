@@ -1,7 +1,4 @@
-# from item import Item
-# from transaction import Transaction
 from itemset import Itemset
-
 
 # Permet de creer le jeu de donnees TRANSACTIONS --> Items
 class Dataset:
@@ -12,9 +9,12 @@ class Dataset:
     def ajouterTransaction(self,maTransaction):
         self.lst_transactions.append(maTransaction)
 
+    # méthode qui returne le nombre de transactions dasn un dataset
+    def nbTransactions(self):
+        return len(self.lst_transactions)
+
     def __repr__(self):
         return "{}".format(self.lst_transactions)
-
 
     #parcourir toutes transactions et pour chaque transaction parcourrir tous les items de le transaction
     # en faire un itemset et verifier si on l'a deja dans le liste des singleton
@@ -27,7 +27,6 @@ class Dataset:
                 item = Itemset([item])
                 if item not in lst_singleton:
                     lst_singleton.append(item)
-                    # retpourne une liste
         return lst_singleton
 
     # cree une liste d'itemset frequent a partir d'une liste d'itemset et d'un minSup
@@ -43,9 +42,6 @@ class Dataset:
                 lst_itemsetfreq.append(monItemset)
         return lst_itemsetfreq
 
-    #méthode qui returne le nombre de transactions dasn un dataset
-    def nbTransactions(self):
-        return len(self.lst_transactions)
 
     #combinaison de toutes les methodes precedentes
     # retourne une liste d'itemsets frequents

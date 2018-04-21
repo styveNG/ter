@@ -1,6 +1,3 @@
-# from item import Item
-# from dataset import Dataset
-# from transaction import Transaction
 from association import  Association
 
 # la classe Itemset herite de la class set
@@ -8,7 +5,6 @@ class Itemset(set):
     def __init__(self, lst_item):
         super().__init__(lst_item)
 
-    # # => comment faire pour accéder à un élément d'un itemset??
 
     # Permet de determiner le support des Itemsets en fonction d'un dataset
     def supportItemset(self,dataset):
@@ -26,7 +22,6 @@ class Itemset(set):
         return support
 
     # Cree des superset a partir de l'union de 2 itemsets de meme taille n
-    ## union est vire remplacé par unionvalide
     def unionItemset(self, monItemset):
         set_result = super().union(monItemset)
         return Itemset(set_result)
@@ -91,4 +86,3 @@ class Itemset(set):
                     if union is not None and union.verifSubset(lst_itemset_frq) and union not in lst_superset:
                         lst_superset.append(union)
         return lst_superset
-

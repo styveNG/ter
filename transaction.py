@@ -1,5 +1,3 @@
-#from item import Item
-
 # Permet de creer les transactions
 class Transaction:
     def __init__(self,nom_transac):

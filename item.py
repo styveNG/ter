@@ -10,8 +10,8 @@ class Item:
 
     # other: correspond a un second item
 
-    def __eq__(self, other):
-        if self.nomItem==other.nomItem and self.spetech==other.spetech:
+    def __eq__(self, autreitem):
+        if self.nomItem==autreitem.nomItem and self.spetech==autreitem.spetech:
             return True
         else:
             return False

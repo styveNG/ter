@@ -29,7 +29,7 @@ class Association:
         self.consequent=consequent
 
     def __repr__(self):
-        return "{}      =>      {}".format(self.antecedent, self.consequent)
+        return "Si {}      =>      {}".format(self.antecedent, self.consequent)
 
     def supportregle(self, unDataset):
         union = self.antecedent.unionItemset(self.consequent)

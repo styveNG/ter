@@ -6,7 +6,6 @@ from association import Association
 
 #_______________________________________________________________________________________________________________________
 
-    #############################################
     ######## TEST CLASS ITEM #############
 
 # Creation des items
@@ -20,9 +19,10 @@ coca = Item("coca", ["2L", "bouteille", "zero"])
 cake = Item("cake")
 # print(biere)
 
+
 #_______________________________________________________________________________________________________________________
 
-    #############################################
+
     ######## TEST CLASS TRANSACTION #############
 
 # Methode1: Creation d'une transaction avec des items existants (cf.CLASS ITEM)
@@ -88,7 +88,6 @@ monCaddie9.ajouterListeProd([Item("pommes",["Golden","10kg"]), Item("pain")])
 
 #_______________________________________________________________________________________________________________________
 
-    #############################################
     ######## TEST CLASS DATASET #############
 
 # Creation du dataset
@@ -133,7 +132,6 @@ lst_itemset=monData.singleton()
 
 #_______________________________________________________________________________________________________________________
 
-    #############################################
     ######## TEST CLASS ITEMSET #############
 
 # Itemset herite de la classe set, elle prend en entree une liste_d'item
@@ -250,6 +248,7 @@ monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monI
 #___________________________________________________________
 
     ##### TEST METHODE  DE CLASSE SUPERSETCAND (Itemset) #####
+
 #superset = Itemset.supersetCand([monItemsetFreq1, monItemsetFreq2, monItemsetFreq3])
 #print(superset)
 
@@ -257,15 +256,16 @@ monverifSubset = monItemset2.verifSubset([monItemsetFreq1, monItemsetFreq2, monI
 
     ##### TEST APRIORI (Dataset) #####
 
-#print(monData.aPriori(minsup=2))
+print(monData.aPriori(minsup=2))
+
+
 #print(monData2.aPriori(minsup=2))
 
 #_______________________________________________________________________________________________________________________
 
-    #############################################
     ######## TEST CLASS ASSOCIATION #############
 
-monItemset9=Itemset([lait,couches])
+monItemset9=Itemset([lait, couches])
 monItemset10=Itemset([biere])
 
 monAsso = Association(monItemset9, monItemset10)
@@ -274,19 +274,25 @@ monAsso = Association(monItemset9, monItemset10)
 #___________________________________________________________
 
     ##### TEST METHODE SUPPORTREGLE (Association) #####
+
 #print(monAsso.supportregle(monData2))
 
 #___________________________________________________________
 
     ##### TEST METHODE CONFIANCE (Association) #####
+
 #print(monAsso.confiance(monData2))
 
 #_______________________________________________________________________________________________________________________
 
     ##### TEST METHODE REGLES_ASSO (Itemset) #####
+
 #print(monItemset2.regles_asso())
 
-#_______________________________________________________________________________________________________________________
+#___________________________________________________________
+
 
     ##### TEST METHODE ASSOCIATIONS_VALIDES (Itemset) #####
-print(monData2.associations_valides(minsup=0.2, minconf=0.5))
+
+#print(monData2.associations_valides(minsup=0.2, minconf=0.9))
+
