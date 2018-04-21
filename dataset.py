@@ -6,8 +6,8 @@ class Dataset:
         self.lst_transactions=[]
 
     # méthode pour ajouter des transactions dans le data
-    def ajouterTransaction(self,maTransaction):
-        self.lst_transactions.append(maTransaction)
+    def ajouterTransaction(self,uneTransaction):
+        self.lst_transactions.append(uneTransaction)
 
     # méthode qui returne le nombre de transactions dasn un dataset
     def nbTransactions(self):

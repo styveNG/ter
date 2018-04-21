@@ -22,24 +22,24 @@ class Itemset(set):
         return support
 
     # Cree des superset a partir de l'union de 2 itemsets de meme taille n
-    def unionItemset(self, monItemset):
-        set_result = super().union(monItemset)
+    def unionItemset(self, unItemset):
+        set_result = super().union(unItemset)
         return Itemset(set_result)
 
     # Affiche le superSet cree a partir de l'union; il doit etre de taille n+1
     #verifie que la l'union de deux itemsets de taille n retourne un itemset de taille n+1
     #si c'est de taille n+1, alors retourne l'union
     #sinon retourne None
-    def unionValide(self, monItemset):
-        if len(self) != len(monItemset):
+    def unionValide(self, unItemset):
+        if len(self) != len(unItemset):
             print("Les itemsets ne sont pas de la meme taille.")
             return None
-        elif len(self.unionItemset(monItemset)) != len(self) +1:
+        elif len(self.unionItemset(unItemset)) != len(self) +1:
             #print("L'union de ces deux itemsets n'est pas valide.")
                 #on commente cette ligne sinon s'affiche dans le resultat de a priori
             return None
         else: #cas ou les itemset sont de meme taille n et leur union est de taille n+1
-            return self.unionItemset(monItemset)
+            return self.unionItemset(unItemset)
 
     # Permet de verifier que TOUS les subset de taille n-1 qui composent un itemset de taille n sont frequents
     # => les elts de lst_frq doivent etre de taille n-1 (vérification non faite ici)
